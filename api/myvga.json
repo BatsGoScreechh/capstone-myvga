@@ -1,111 +1,118 @@
 {
-    "users": [
-        {
-            "username": "BatsGoScreechh",
-            "password": "password",
-            "email": "bird11@mctc.edu",
-            "id": 1
-        },
-        {
-            "username": "KittysGoMeoww",
-            "password": "password",
-            "email": "a@a.com",
-            "id": 2
-        }
-    ],
-    "games": [
-        {
-            "title": "Skyrim",
-            "genreId": 2,
-            "platformId": 1,
-            "userId": 1
-        }
-    ],
-    "genres": [
-        {
-            "name": "Shooter",
-            "id": 1
-        },
-        {
-            "name": "Role-playing Game",
-            "id": 2
-        },
-        {
-            "name": "Massive Multiplayer Online",
-            "id": 3
-        },
-        {
-            "name": "Simulation",
-            "id": 4
-        },
-
-        {
-            "name": "Platform",
-            "id": 5
-        },
-        {
-            "name": "Sports",
-            "id": 6
-        },
-        {
-            "name": "Strategy",
-            "id": 7
-        },
-        {
-            "name": "Action-adventure",
-            "id": 8
-        },
-        {
-            "name": "Action",
-            "id": 9
-        },
-        {
-            "name": "Adventure",
-            "id": 10
-        },
-        {
-            "name": "Rhythm",
-            "id": 11
-        }
-    ],
-    "platforms": [
-        {
-            "name": "Steam",
-            "id": 1
-        },
-        {
-            "name": "Origin",
-            "id": 2
-        },
-        {
-            "name": "Battle.net",
-            "id": 3
-        },
-        {
-            "name": "X-Box",
-            "id": 4
-        },
-        {
-            "name": "Playstation",
-            "id": 5
-        },
-        {
-            "name": "Nintendo",
-            "id": 6
-        }
-    ],
-    "friends": [
-        {
-            "userId": 1,
-            "otherFriendId": 2,
-            "id": 1
-        }
-    ],
-    "messages": [
-        {
-            "userId": 1,
-            "message": "Hello, World",
-            "id": 1
-        }
-    ]
+  "users": [
+    {
+      "username": "BatsGoScreechh",
+      "password": "password",
+      "email": "bird11@mctc.edu",
+      "id": 1
+    },
+    {
+      "username": "KittysGoMeoww",
+      "password": "password",
+      "email": "a@a.com",
+      "id": 2
+    }
+  ],
+  "games": [
+    {
+      "title": "Skyrim",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "The Sims 4",
+      "genreId": 4,
+      "platformId": 2,
+      "userId": 1,
+      "id": 2
+    }
+  ],
+  "genres": [
+    {
+      "name": "Shooter",
+      "id": 1
+    },
+    {
+      "name": "Role-playing Game",
+      "id": 2
+    },
+    {
+      "name": "Massive Multiplayer Online",
+      "id": 3
+    },
+    {
+      "name": "Simulation",
+      "id": 4
+    },
+    {
+      "name": "Platform",
+      "id": 5
+    },
+    {
+      "name": "Sports",
+      "id": 6
+    },
+    {
+      "name": "Strategy",
+      "id": 7
+    },
+    {
+      "name": "Action-adventure",
+      "id": 8
+    },
+    {
+      "name": "Action",
+      "id": 9
+    },
+    {
+      "name": "Adventure",
+      "id": 10
+    },
+    {
+      "name": "Rhythm",
+      "id": 11
+    }
+  ],
+  "platforms": [
+    {
+      "name": "Steam",
+      "id": 1
+    },
+    {
+      "name": "Origin",
+      "id": 2
+    },
+    {
+      "name": "Battle.net",
+      "id": 3
+    },
+    {
+      "name": "X-Box",
+      "id": 4
+    },
+    {
+      "name": "Playstation",
+      "id": 5
+    },
+    {
+      "name": "Nintendo",
+      "id": 6
+    }
+  ],
+  "friends": [
+    {
+      "userId": 1,
+      "otherFriendId": 2,
+      "id": 1
+    }
+  ],
+  "messages": [
+    {
+      "userId": 1,
+      "message": "Hello, World",
+      "id": 1
+    }
+  ]
 }

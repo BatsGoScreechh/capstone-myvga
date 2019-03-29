@@ -2,8 +2,10 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import UserAPIManager from "../modules/UserManager"
 import GameAPIManager from "../modules/GameManager"
+import GenreAPIManager from "../modules/GenreManager"
+import PlatformAPIManager from "../modules/PlatformManager"
 import GameList from "./games/GameList"
-
+import GameDetail from "./games/GameDetail"
 
 export default class ApplicationViews extends Component {
 
@@ -63,30 +65,33 @@ export default class ApplicationViews extends Component {
         // Get all info from the API and set state
 
         UserAPIManager.getAllUsers()
-          .then(users => newState.users = users)
-          .then(() => GameAPIManager.getAllGames(this.state.activeUser))
-          .then(games => newState.games = games)
-          .then(() => {
-            // this.buildFriendArray(newState.friends, newState.users)
-            this.setState(newState)
-          })
-      }
+            .then(users => newState.users = users)
+            .then(() => GameAPIManager.getAllGames(this.state.activeUser))
+            .then(games => newState.games = games)
+            .then(() => GenreAPIManager.getAllGenres())
+            .then(genres => newState.genres = genres)
+            .then(() => PlatformAPIManager.getAllPlatforms())
+            .then(platforms => newState.platforms = platforms)
+            .then(() => {
+                // this.buildFriendArray(newState.friends, newState.users)
+                this.setState(newState)
+            })
+    }
 
-      componentDidMount() {
+    componentDidMount() {
         this.mountUponLogin()
-      }
+    }
 
-      isAuthenticated = () => {
+    isAuthenticated = () => {
         return sessionStorage.getItem("activeUser") !== null
-      }
+    }
 
     // when login/register route is created, the onClick function will be handled here.
     // Set session storage, make api calls to get news/events/chat etc for this user
     // and set the state.
 
 
-    // Check if credentials are in local storage
-    // isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
 
 
     render() {
@@ -95,20 +100,30 @@ export default class ApplicationViews extends Component {
 
                 <Route
                     exact path="/my-games" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <GameList {...props}
-                                games={this.state.games}
-                                genres={this.state.genres}
-                                platforms={this.state.platforms}
-                                addGame={this.addGame}
-                                editGame={this.editGame}
-                                deleteGame={this.deleteGame} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }} />
+                        // if (this.isAuthenticated()) {
+                        return <GameList {...props}
+                            games={this.state.games}
+                            genres={this.state.genres}
+                            platforms={this.state.platforms}
+                            addGame={this.addGame}
+                            editGame={this.editGame}
+                            deleteGame={this.deleteGame} />
+                    }
+                        // else {
+                        //     return <Redirect to="/login" />
+                        // }
+                    } />
 
-                <Route
+                {/* <Route path="/my-games/:platformId(\d+)" render={(props) => {
+                    return <GameDetail {...props}
+                        games={this.state.games}
+                        genres={this.state.genres}
+                        platforms={this.state.platforms}
+                        addGame={this.addGame}
+                        editGame={this.editGame}
+                        deleteGame={this.deleteGame} />
+                }} /> */}
+                {/* <Route
                     path="/news/new" render={props => {
                         if (this.isAuthenticated()) {
                             return <NewsForm {...props}
@@ -302,7 +317,7 @@ export default class ApplicationViews extends Component {
                     return (
                         <NewModalForm {...props} tasks={this.state.tasks} />
                     )
-                }} />
+                }} /> */}
 
             </React.Fragment>
         );

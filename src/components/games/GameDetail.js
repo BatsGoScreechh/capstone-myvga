@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class GameList extends Component {
     state = {
-        title: "",
-        genreId: "",
-        platformId: "",
-        matchingGames: "",
+        game: "",
+        genre: "",
+        platform: "",
         userId: parseInt(sessionStorage.getItem("activeUser"))
     };
 
@@ -25,8 +24,8 @@ export default class GameList extends Component {
         evt.preventDefault();
         const game = {
             title: this.state.game,
-            genreId: parseInt(this.state.genre),
-            platformId: parseInt(this.state.platform),
+            genre: this.state.genre,
+            platform: this.state.platform,
             userId: this.state.userId
         };
 
@@ -35,20 +34,17 @@ export default class GameList extends Component {
         this.props.history.push("/my-games");
     }
 
-    filterGame = (pId) => {
-        const matchingGames = this.props.games.filter(result => result.platform.id === pId)
-         this.setState({
-            matchingGames: matchingGames
-        })
-        console.log(this.props)
+    // filterGame = evt => {
+    //     if (this.props.match.params.platformId === this.props.platforms.id) {
 
-    }
-
+    //     }
+    // }
 
 
     render() {
-        console.log(this.state)
-        const platform = this.props.platforms.find(a => a.id === parseInt(this.props.match.params.platformId)) || {}
+        // const platform = this.props.platforms.id
+        // const result = this.props.games.filter(result => result.platformId === this.props.match.params.platformId)
+        console.log(this.props)
         return (
             <form className="game-form">
                 {/* Add New Game Section */}
@@ -106,15 +102,18 @@ export default class GameList extends Component {
                     {this.props.platforms.map(p => (
 
                         <nav className="navbar">
+                            <ul className="nav-unordered-list">
+                                <li className="nav-item">
 
-                            <button type="button" className="navbar-buttons" onClick={this.filterGame} key={p.id}>{p.name}</button>
+                                    <Link className="nav-link" to={`/my-games/${p.id}`}>{p.name}</Link>
+                                </li>
 
+
+                            </ul>
                         </nav>
                     ))}
                     {
-
                         this.props.games.map(game =>
-
                             // console.log(this.props)
                             <div key={game.id} className="card">
                                 <div className="card-body">
@@ -123,7 +122,7 @@ export default class GameList extends Component {
                                             <p className="game-name">{game.title}</p>
                                             <p className="game-genre">{game.genre.name}</p>
                                         </div>
-                                        <button className="card-link btn btn-primary"
+                                        <button className="edit-button"
                                             onClick={() => {
                                                 // Determine onClick status
                                             }}>Edit</button>
