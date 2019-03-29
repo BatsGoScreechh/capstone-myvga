@@ -35,19 +35,31 @@ export default class GameList extends Component {
         window.location.reload(true);
     }
 
-    updateCurrentGame = evt => {
+    constructEditGame = evt => {
         evt.preventDefault();
-        const game = {
-            title: this.state.title,
-            genreId: parseInt(this.state.genreId),
-            platformId: parseInt(this.state.platformId),
-            // userId: this.state.userId
-        };
+        if (this.state.message === "") {
+            window.alert("Cannot leave blank");
+        } else {
+            const editedGame = {
+                title: this.state.title,
+                genreId: parseInt(this.state.genreId),
+                platformId: parseInt(this.state.platformId),
+                userId: sessionStorage.getItem("credentials")
+                // Make sure the employeeId is saved to the database as a number since it is a foreign key.
 
-        this.props
-            .updateGame(game)
-        window.location.reload(true);
-    }
+            };
+
+            this.props.updateGame(editedGame)
+                .then(() => window.location.reload(true)
+                    .then(this.setState({
+                        title: "",
+                        genreId: "",
+                        platformId: "",
+                    })
+                    )
+                )
+        }
+    };
 
     filterGame = (pId) => {
         let matchingGames = this.props.games.filter(game => game.platform.id === pId)
