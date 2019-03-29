@@ -1,6 +1,6 @@
 export default {
 
-    getAllGames: (id) => {
+    getAllGames: () => {
       return fetch(`http://localhost:5002/games?_expand=genre&_expand=platform`)
         .then(r => r.json())
     },
@@ -24,7 +24,7 @@ export default {
         body: JSON.stringify(newGame)
       }).then(data => data.json())
     },
-    editGame(editedGame) {
+    updateGame(editedGame) {
       return fetch(`http://localhost:5002/games/${editedGame.id}`, {
         method: "PUT",
         headers: {

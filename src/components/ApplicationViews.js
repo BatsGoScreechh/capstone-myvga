@@ -5,7 +5,9 @@ import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
 import PlatformAPIManager from "../modules/PlatformManager"
 import GameList from "./games/GameList"
-import GameDetail from "./games/GameDetail"
+
+
+
 
 export default class ApplicationViews extends Component {
 
@@ -48,8 +50,8 @@ export default class ApplicationViews extends Component {
     }
 
 
-    updateGame = (game) => {
-        GameAPIManager.editGame(game)
+    updateGame = editedGameObject => {
+        return GameAPIManager.updateGame(editedGameObject)
             .then(() => GameAPIManager.getAllGames(this.state.activeUser))
             .then(games => this.setState({
                 games: games
@@ -106,7 +108,7 @@ export default class ApplicationViews extends Component {
                             genres={this.state.genres}
                             platforms={this.state.platforms}
                             addGame={this.addGame}
-                            editGame={this.editGame}
+                            updateGame={this.editGame}
                             deleteGame={this.deleteGame} />
                     }
                         // else {
