@@ -1,26 +1,33 @@
 import React, { Component } from "react";
 import AddGame from "./AddGame";
 // import ChatEdit from "../chat/chatEdit";
-import ChatForm from "../chat/chatForm";
+import GameList from "../games/GameList";
 
-export default class Chat extends Component {
+export default class MyGame extends Component {
   render() {
+      console.log(this.props)
     return (
       <React.Fragment>
 
         <AddGame
           {...this.props}
-          messages={this.props.messages}
-          addMessage={this.props.addMessage}
-          deleteMessage={this.props.deleteMessage}
-          updateMessage={this.props.updateMessage}
+          games={this.props.games}
+          genres={this.props.genres}
+          platforms={this.props.platforms}
+          addGame={this.props.addGame}
+          updateGame={this.props.updateGame}
+          deleteGame={this.props.deleteGame}
 
         />
 
-        <ChatForm
+        <GameList
         {...this.props}
-          messages={this.props.messages}
-          addMessage={this.props.addMessage}
+        games={this.props.games}
+        genres={this.props.genres}
+        platforms={this.props.platforms}
+        addGame={this.props.addGame}
+        updateGame={this.props.updateGame}
+        deleteGame={this.props.deleteGame}
 
         />
       </React.Fragment>

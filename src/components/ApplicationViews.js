@@ -5,6 +5,7 @@ import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
 import PlatformAPIManager from "../modules/PlatformManager"
 import GameList from "./games/GameList"
+import MyGame from "./games/MyGame"
 
 
 
@@ -104,12 +105,12 @@ export default class ApplicationViews extends Component {
                 <Route
                     exact path="/my-games" render={props => {
                         // if (this.isAuthenticated()) {
-                        return <GameList {...props}
+                        return <MyGame {...props}
                             games={this.state.games}
                             genres={this.state.genres}
                             platforms={this.state.platforms}
                             addGame={this.addGame}
-                            updateGame={this.editGame}
+                            updateGame={this.updateGame}
                             deleteGame={this.deleteGame} />
                     }
                         // else {

@@ -31,6 +31,18 @@
       "genreId": 1,
       "platformId": 2,
       "id": 3
+    },
+    {
+      "title": "Morrowind",
+      "genreId": 2,
+      "platformId": 1,
+      "id": 4
+    },
+    {
+      "title": "Battlefield 2",
+      "genreId": 1,
+      "platformId": 2,
+      "id": 5
     }
   ],
   "genres": [

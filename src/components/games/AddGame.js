@@ -32,8 +32,10 @@ export default class AddGame extends Component {
 
         this.props
             .addGame(game)
+            window.alert("Game successfully added to library.")
         window.location.reload(true);
     }
+
     render() {
         console.log(this.props)
         return (
