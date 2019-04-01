@@ -61,6 +61,12 @@ export default class GameList extends Component {
         }
     };
 
+    handleEditFieldChange = evt => {
+        const stateToChange = {};
+        stateToChange[evt.target.id] = evt.target.value;
+        this.setState(stateToChange)
+    }
+
     filterGame = (pId) => {
         let matchingGames = this.props.games.filter(game => game.platform.id === pId)
         this.setState({
@@ -87,7 +93,7 @@ export default class GameList extends Component {
 
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
 
         if (this.state.matchingGames.length === 0) {
             return (

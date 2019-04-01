@@ -3,10 +3,11 @@ import React, { Component } from "react";
 import GameAPIManager from '../../modules/GameManager'
 
 
-export default class NoteEditForm extends Component {
+export default class GameEditForm extends Component {
     // Set initial state
     state = {
         name: "",
+        genre: [],
         userId: parseInt(sessionStorage.getItem("activeUser"))
     };
 
