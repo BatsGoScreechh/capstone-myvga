@@ -5,7 +5,7 @@ import GameList from "../games/GameList";
 
 export default class MyGame extends Component {
   render() {
-      console.log(this.props)
+    console.log(this.props)
     return (
       <React.Fragment>
 

@@ -111,7 +111,8 @@ export default class ApplicationViews extends Component {
                             platforms={this.state.platforms}
                             addGame={this.addGame}
                             updateGame={this.updateGame}
-                            deleteGame={this.deleteGame} />
+                            deleteGame={this.deleteGame}
+                             />
                     }
                         // else {
                         //     return <Redirect to="/login" />

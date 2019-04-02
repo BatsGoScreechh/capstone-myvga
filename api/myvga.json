@@ -15,34 +15,17 @@
   ],
   "games": [
     {
-      "title": "Skyrim",
-      "genreId": 2,
-      "platformId": 1,
-      "id": 1
+      "id": 1,
+      "title": "Battlefield 4",
+      "genreId": 1,
+      "platformId": 2,
+      "userId": null
     },
     {
-      "title": "The Sims 4",
+      "title": "The Sims ",
       "genreId": 4,
       "platformId": 2,
       "id": 2
-    },
-    {
-      "title": "Battlefield 3",
-      "genreId": 1,
-      "platformId": 2,
-      "id": 3
-    },
-    {
-      "title": "Morrowind",
-      "genreId": 2,
-      "platformId": 1,
-      "id": 4
-    },
-    {
-      "title": "Battlefield 2",
-      "genreId": 1,
-      "platformId": 2,
-      "id": 5
     }
   ],
   "genres": [

@@ -12,7 +12,7 @@ export default {
       return fetch(`http://localhost:5002/games/${id}`, {
         method: "DELETE"
       })
-        .then(() => fetch(`http://localhost:5002/games`))
+        .then(() => fetch(`http://localhost:5002/games?_expand=genre&_expand=platform`))
         .then(e => e.json())
     },
     addNewGame(newGame) {

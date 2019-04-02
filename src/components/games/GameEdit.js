@@ -8,9 +8,9 @@ export default class GameEdit extends React.Component {
     this.state = { showGame: false }
   }
 
-  _showMessage = (bool) => {
+  _showGame = (bool) => {
     this.setState({
-      showMessage: bool
+      showGame: bool
     });
   }
 
