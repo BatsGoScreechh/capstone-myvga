@@ -219,22 +219,6 @@ export default class GameList extends Component {
 
                                     </div>
                                 </div>
-                                } else {
-                                    return <div key={singleMessage.id}>
-                                        <div>{singleMessage.user.name}{": "}{singleMessage.message}</div>
-
-
-                                        <button type="button"
-                                            className="btn btn-success"
-                                            id={singleMessage.id}
-                                            onClick={() => {
-                                                this.setState({
-                                                    messageToEdit: singleMessage
-                                                })
-                                            }}
-                                        >Edit
-                                    </button>
-                                    </div>
                                 }
                             })
 

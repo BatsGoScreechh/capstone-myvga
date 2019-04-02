@@ -1,28 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
-
-export default class GameEdit extends React.Component {
-
-  constructor() {
-    super();
-    this.state = { showGame: false }
-  }
-
-  _showGame = (bool) => {
-    this.setState({
-      showGame: bool
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        Click the buttons to toggle the message <br/>
-        <button onClick={this._showMessage.bind(null, true)}>show</button>
-        { this.state.showMessage && (<div>hello world!</div>) }
-      </div>
-    )
-  }
-}
-
-render(<GameEdit />, document.getElementById('library-table'));
+<div className="library-table" id="library">
+  <div className="library-entry" id="entry" key={game.id}>
+    <ul className="library-list">
+      <li key={game.id} className="game-table">{game.title}</li>
+      <li key={game.genreId} className="genre-table">
+        {game.genre.name}</li>
+    </ul>
+    <div className="button-table">
+      <button className="edit-button" id={game.id}
+        onClick=
+        {
+          this._showGame.bind(null, true)
+        }
+      >Edit</button>
