@@ -15,17 +15,10 @@
   ],
   "games": [
     {
-      "id": 1,
-      "title": "Battlefield 4",
-      "genreId": 1,
-      "platformId": 2,
-      "userId": null
-    },
-    {
-      "title": "The Sims ",
+      "id": 2,
+      "title": "The Sims 4",
       "genreId": 4,
-      "platformId": 2,
-      "id": 2
+      "platformId": 2
     }
   ],
   "genres": [

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AddGame from "./AddGame";
 // import ChatEdit from "../chat/chatEdit";
 import GameList from "../games/GameList";
-
+import EditTest from "../games/EditTest"
 export default class MyGame extends Component {
   render() {
     console.log(this.props)
@@ -30,6 +30,7 @@ export default class MyGame extends Component {
         deleteGame={this.props.deleteGame}
 
         />
+
       </React.Fragment>
     );
   }
