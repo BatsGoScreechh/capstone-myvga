@@ -11,14 +11,21 @@
       "password": "password",
       "email": "a@a.com",
       "id": 2
+    },
+    {
+      "username": "David",
+      "email": "d",
+      "password": "",
+      "id": 3
     }
   ],
   "games": [
     {
-      "id": 2,
-      "title": "The Sims 4",
-      "genreId": 4,
-      "platformId": 2
+      "title": "Morrowind",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": 1,
+      "id": 1
     }
   ],
   "genres": [

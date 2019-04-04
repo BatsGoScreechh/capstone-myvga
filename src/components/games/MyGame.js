@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import AddGame from "./AddGame";
-import GameList from "../games/GameList";
+import GameList from "./GameList";
+// import GameNav from "./GameNav"
 export default class MyGame extends Component {
   render() {
     return (
       <React.Fragment>
+         {/* <GameNav
+            {...this.props}
+            platforms={this.props.platforms}
+            games={this.props.games}
+          /> */}
           <AddGame
             {...this.props}
             games={this.props.games}
@@ -13,6 +19,7 @@ export default class MyGame extends Component {
             addGame={this.props.addGame}
             updateGame={this.props.updateGame}
             deleteGame={this.props.deleteGame}
+
           />
           <GameList
             {...this.props}

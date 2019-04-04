@@ -5,6 +5,7 @@ import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
 import PlatformAPIManager from "../modules/PlatformManager"
 import MyGame from "./games/MyGame"
+import Register from "./authentication/RegisterForm"
 import Login from "./authentication/Login"
 
 
@@ -18,6 +19,7 @@ export default class ApplicationViews extends Component {
         platforms: [],
         friends: [],
         messages: [],
+        activeUser: sessionStorage.getItem("activeUser"),
     }
 
     //** Game Functions **//
@@ -59,6 +61,10 @@ export default class ApplicationViews extends Component {
 
     addUser = (userObject) => {
         return UserAPIManager.addNewUser(userObject)
+    }
+
+    checkLogin = (username, password) => {
+        return UserAPIManager.checkNameAndPassword(username, password)
     }
 
     mountUponLogin = () => {
@@ -105,34 +111,43 @@ export default class ApplicationViews extends Component {
             <React.Fragment>
                 <Route
                     exact path="/" render={props => {
-                        // if (this.isAuthenticated()) {
                         return <Login {...props}
-                            users={this.state.games}
+                            users={this.state.users}
                             checkEmail={this.checkEmail}
                             checkName={this.checkName}
                             addUser={this.addUser}
+                            mountUponLogin={this.mountUponLogin}
+                            checkLogin={this.checkLogin}
                         />
                     }
-                        // else {
-                        //     return <Redirect to="/login" />
-                        // }
+                    } />
+                <Route
+                    exact path="/register" render={props => {
+                        return <Register {...props}
+                            users={this.state.users}
+                            checkEmail={this.checkEmail}
+                            checkName={this.checkName}
+                            addUser={this.addUser}
+                            mountUponLogin={this.mountUponLogin}
+                        />
+                    }
                     } />
                 <Route
                     exact path="/my-games" render={props => {
-                        // if (this.isAuthenticated()) {
-                        return <MyGame {...props}
-                            games={this.state.games}
-                            genres={this.state.genres}
-                            platforms={this.state.platforms}
-                            addGame={this.addGame}
-                            updateGame={this.updateGame}
-                            deleteGame={this.deleteGame}
-                        />
-                    }
-                        // else {
-                        //     return <Redirect to="/login" />
-                        // }
-                    } />
+                        if (this.isAuthenticated()) {
+                            return <MyGame {...props}
+                                games={this.state.games}
+                                genres={this.state.genres}
+                                platforms={this.state.platforms}
+                                addGame={this.addGame}
+                                updateGame={this.updateGame}
+                                deleteGame={this.deleteGame}
+                            />
+                        }
+                        else {
+                            return <Redirect to="/" />
+                        }
+                    }} />
 
                 {/* <Route path="/my-games/:platformId(\d+)" render={(props) => {
                     return <GameDetail {...props}

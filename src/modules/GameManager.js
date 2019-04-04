@@ -1,7 +1,7 @@
 export default {
 
-    getAllGames: () => {
-      return fetch(`http://localhost:5002/games?_expand=genre&_expand=platform`)
+    getAllGames: (id) => {
+      return fetch(`http://localhost:5002/games?_expand=genre&_expand=platform&_user=${id}`)
         .then(r => r.json())
     },
     getSingleGame: (id) => {

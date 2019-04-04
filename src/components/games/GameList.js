@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GameAPIManager from '../../modules/GameManager'
+// import GameNav from "./GameNav"
 
 export default class GameList extends Component {
 
@@ -27,7 +28,7 @@ export default class GameList extends Component {
                 title: this.state.title,
                 genreId: parseInt(this.state.genreId),
                 platformId: parseInt(this.state.platformId),
-                // userId: sessionStorage.getItem("credentials")
+                userId: sessionStorage.getItem("credentials")
             };
             this.props.updateGame(editedGame)
                 .then(() => this.props.history.push("/my-games"))
@@ -54,6 +55,7 @@ export default class GameList extends Component {
         })
 
     }
+
     render() {
         if (this.state.matchingGames.length === 0) {
             return (

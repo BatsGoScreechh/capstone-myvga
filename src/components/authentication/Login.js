@@ -1,26 +1,62 @@
-import React, { Component } from "react";
-import RegisterForm from "./RegisterForm";
+import React, {Component} from "react"
+// import "./Login.css"
+export default class LoginForm extends Component {
 
-export default class MyGame extends Component {
-    render() {
-        return (
+    state = {
+        username: "",
+        email: "",
+        password: "",
+        errorMessage: ""
+    }
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+    }
+
+    //log in handle function to set to session storage
+    logInUser = evt => {
+        let errorMessage = ""
+        evt.preventDefault();
+        this.props.checkLogin(this.state.username, this.state.password).then(user => {
+            if(user.length > 0){
+                        sessionStorage.setItem("activeUser", user[0].id)
+                        this.props.history.push("/my-games")
+                        this.props.mountUponLogin()
+                    } else {
+                        console.log(user)
+                        errorMessage = "This username and password combination does not exist. Please try again or register!"
+                        this.setState({
+                            errorMessage : errorMessage
+                        })
+                    }
+                })
+            }
+
+
+
+
+    render(){
+
+        return(
             <React.Fragment>
-                <RegisterForm
-                    users={this.state.games}
-                    checkEmail={this.checkEmail}
-                    checkName={this.checkName}
-                    addUser={this.addUser}
-                />
-                {/* <GameList
-            {...this.props}
-            games={this.props.games}
-            genres={this.props.genres}
-            platforms={this.props.platforms}
-            addGame={this.props.addGame}
-            updateGame={this.props.updateGame}
-            deleteGame={this.props.deleteGame}
-          /> */}
+                <div className="login-container">
+            <h1>Please Sign In</h1>
+            <form>
+            <div className="form-group">
+                <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={this.handleFieldChange}/>
+            </div>
+            <div className="form-group">
+                <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleFieldChange}/>
+            </div>
+            <button type="submit" className="login-button" onClick={this.logInUser}>Submit</button>
+            <button className="register-button" onClick={() => {this.props.history.push("/register")}}>Register</button>
+            </form>
+            <h4>{this.state.errorMessage}</h4>
+            </div>
             </React.Fragment>
-        );
+
+        )
     }
 }
