@@ -27,7 +27,7 @@ export default class AddGame extends Component {
             title: this.state.title,
             genreId: parseInt(this.state.genreId),
             platformId: parseInt(this.state.platformId),
-            // userId: this.state.userId
+            userId: this.state.userId
         };
 
         this.props
@@ -37,7 +37,6 @@ export default class AddGame extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <React.Fragment>
                 <h1 htmlFor="Game">Add New Game</h1>
@@ -82,9 +81,7 @@ export default class AddGame extends Component {
                 </select >
                 <button type="button"
                     className="submit-game-button"
-                    onClick={
-                        this.constructNewGame
-                    }
+                    onClick={this.constructNewGame}
                 >
                     Add Game
                     </button>

@@ -6,40 +6,17 @@ export default class GameList extends Component {
     state = {
         matchingGames: [],
         title: "",
-        genreId: "",
         platformId: "",
         gameToEdit: "",
         key: "",
         userId: parseInt(sessionStorage.getItem("activeUser"))
     };
-
-
-
-    // _showGame = (bool, event) => {
-    //     let key = event.target.id
-    //     GameAPIManager.getSingleGame(key).then(game => {
-
-    //         this.setState({
-    //             title: game.title,
-    //             genreId: game.genreId,
-    //             showGame: bool,
-    //             key: key,
-    //             platformId: game.platformId
-    //         });
-    //     });
-    // }
-
-
-
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = this.state.gameToEdit;
         stateToChange[evt.target.id] = evt.target.value;
-        this.setState({gameToEdit:stateToChange});
+        this.setState({ gameToEdit: stateToChange });
     };
-
-
-
     constructEditGame = evt => {
         evt.preventDefault();
         if (this.state.title === "") {
@@ -52,7 +29,6 @@ export default class GameList extends Component {
                 platformId: parseInt(this.state.platformId),
                 // userId: sessionStorage.getItem("credentials")
             };
-
             this.props.updateGame(editedGame)
                 .then(() => this.props.history.push("/my-games"))
                 .then(this.setState({
@@ -71,7 +47,6 @@ export default class GameList extends Component {
             });
         });
     }
-
     filterGame = (pId) => {
         let matchingGames = this.props.games.filter(game => game.platform.id === pId)
         this.setState({
@@ -79,42 +54,26 @@ export default class GameList extends Component {
         })
 
     }
-
     render() {
-        console.log(this.state)
         if (this.state.matchingGames.length === 0) {
             return (
-
                 <div className="game-div">
-
                     {/* My Games Library */}
                     <section className="games">
                         <h1 htmlFor="Game">My Game Library</h1>
                         {this.props.platforms.map(p => (
-
                             <nav className="navbar">
-
                                 <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
-
                             </nav>
                         ))}
                         {
-
-
-                            // console.log(this.props)
-
                             <div className="library-table" id="library">
                                 <p className="no-games-message">Welcome to MyVGA.</p>
                             </div>
-
-
-
-
                         }
                     </section>
                 </div>
             )
-
         } else if (this.state.matchingGames.length >= 1) {
             return (
                 <div className="game-div">
@@ -122,15 +81,11 @@ export default class GameList extends Component {
                     <section className="games">
                         <h1 htmlFor="Game">My Game Library</h1>
                         {this.props.platforms.map(p => (
-
                             <nav className="navbar">
-
                                 <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
-
                             </nav>
                         ))}
                         {
-
                             this.state.matchingGames.map(game => {
                                 if (this.state.gameToEdit.id === game.id) {
                                     return <div className="library-entry" id="entry" key={game.id}>
@@ -161,8 +116,7 @@ export default class GameList extends Component {
                                                 defaultValue={game.platformId}
                                                 name="platform"
                                                 id="platformId"
-                                                onChange={this.handleFieldChange}
-                                            >
+                                                onChange={this.handleFieldChange}>
                                                 <option value="">{game.platform.name}</option>
                                                 {this.props.platforms.map(p => (
                                                     <option key={p.id} id={p.id} value={p.id}>
@@ -172,11 +126,8 @@ export default class GameList extends Component {
                                             </select >
                                             <button
                                                 type="submit"
-                                                onClick={
-                                                    this.constructEditGame
-                                                }
-                                                className="submit-game-button"
-                                            >Submit</button>
+                                                onClick={this.constructEditGame}
+                                                className="submit-game-button">Submit</button>
                                         </div>
                                     </div>
                                 } else {
@@ -196,9 +147,6 @@ export default class GameList extends Component {
                                                         })
                                                     }}
                                                 > Edit</button>
-
-
-
                                                 <button
                                                     type="button"
                                                     className="delete-button"
@@ -211,18 +159,14 @@ export default class GameList extends Component {
                                                     Delete
                                                 </button>
                                             </div>
-
                                         </div>
                                     </div>
                                 }
-                            })
-
-
-
+                            }
+                            )
                         }
                     </section>
                 </div>
-
             )
         }
     }

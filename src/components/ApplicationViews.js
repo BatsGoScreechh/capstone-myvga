@@ -4,9 +4,8 @@ import UserAPIManager from "../modules/UserManager"
 import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
 import PlatformAPIManager from "../modules/PlatformManager"
-import GameList from "./games/GameList"
 import MyGame from "./games/MyGame"
-
+import Login from "./authentication/Login"
 
 
 
@@ -21,17 +20,7 @@ export default class ApplicationViews extends Component {
         messages: [],
     }
 
-    //User Functions//
-    // addUser = user =>
-    //     UserAPIManager.addNewUser(user)
-    //         .then(() => UserAPIManager.getAllUsers(this.state.activeUser))
-    //         .then(users =>
-    //             this.setState({
-    //                 users: users
-    //             })
-    //         );
-
-    //Game Functions//
+    //** Game Functions **//
     addGame = (game) => {
         GameAPIManager.addNewGame(game)
             .then(() => GameAPIManager.getAllGames(this.state.activeUser))
@@ -59,11 +48,24 @@ export default class ApplicationViews extends Component {
             }))
     }
 
+    //** Login/Register Functions **//
+    checkEmail = (email) => {
+        return UserAPIManager.checkEmail(email)
+    }
+
+    checkName = (username) => {
+        return UserAPIManager.checkName(username)
+    }
+
+    addUser = (userObject) => {
+        return UserAPIManager.addNewUser(userObject)
+    }
 
     mountUponLogin = () => {
         const activeUser = sessionStorage.getItem("activeUser")
         this.setState({ activeUser: activeUser })
         const newState = {}
+
 
         // Get all info from the API and set state
 
@@ -101,7 +103,20 @@ export default class ApplicationViews extends Component {
         console.log(this.state)
         return (
             <React.Fragment>
-
+                <Route
+                    exact path="/" render={props => {
+                        // if (this.isAuthenticated()) {
+                        return <Login {...props}
+                            users={this.state.games}
+                            checkEmail={this.checkEmail}
+                            checkName={this.checkName}
+                            addUser={this.addUser}
+                        />
+                    }
+                        // else {
+                        //     return <Redirect to="/login" />
+                        // }
+                    } />
                 <Route
                     exact path="/my-games" render={props => {
                         // if (this.isAuthenticated()) {
@@ -112,7 +127,7 @@ export default class ApplicationViews extends Component {
                             addGame={this.addGame}
                             updateGame={this.updateGame}
                             deleteGame={this.deleteGame}
-                             />
+                        />
                     }
                         // else {
                         //     return <Redirect to="/login" />
