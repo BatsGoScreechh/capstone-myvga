@@ -17,6 +17,12 @@
       "email": "d",
       "password": "",
       "id": 3
+    },
+    {
+      "username": "a",
+      "email": "b@b.com",
+      "password": "a",
+      "id": 4
     }
   ],
   "games": [

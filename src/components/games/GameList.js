@@ -53,7 +53,7 @@ export default class GameList extends Component {
         this.setState({
             matchingGames: matchingGames
         })
-
+console.log(this.state)
     }
 
     render() {

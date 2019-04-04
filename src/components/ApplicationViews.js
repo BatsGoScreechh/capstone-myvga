@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import UserAPIManager from "../modules/UserManager"
 import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
+import FriendAPIManager from "../modules/FriendManager"
 import PlatformAPIManager from "../modules/PlatformManager"
-import MyGame from "./games/MyGame"
+import Game from "./games/Game"
 import Register from "./authentication/RegisterForm"
 import Login from "./authentication/Login"
-
+import Friend from "./friends/Friend"
 
 
 export default class ApplicationViews extends Component {
@@ -18,7 +19,6 @@ export default class ApplicationViews extends Component {
         genres: [],
         platforms: [],
         friends: [],
-        messages: [],
         activeUser: sessionStorage.getItem("activeUser"),
     }
 
@@ -67,10 +67,24 @@ export default class ApplicationViews extends Component {
         return UserAPIManager.checkNameAndPassword(username, password)
     }
 
+    //** Friends Function **//
+
+    // addFriend = (friend) => {
+    //     GameAPIManager.addFriend(friend)
+    //         .then(() => GameAPIManager.getAllFriends(this.state.activeUser))
+    //         .then(friends => this.setState({
+    //             friends: friends
+    //         }
+    //         ))
+    // }
+
+
     mountUponLogin = () => {
         const activeUser = sessionStorage.getItem("activeUser")
         this.setState({ activeUser: activeUser })
         const newState = {}
+
+
 
 
         // Get all info from the API and set state
@@ -79,6 +93,8 @@ export default class ApplicationViews extends Component {
             .then(users => newState.users = users)
             .then(() => GameAPIManager.getAllGames(this.state.activeUser))
             .then(games => newState.games = games)
+            .then(() => FriendAPIManager.getAllFriends(this.state.activeUser))
+            .then(friends => newState.friends = friends)
             .then(() => GenreAPIManager.getAllGenres())
             .then(genres => newState.genres = genres)
             .then(() => PlatformAPIManager.getAllPlatforms())
@@ -135,7 +151,7 @@ export default class ApplicationViews extends Component {
                 <Route
                     exact path="/my-games" render={props => {
                         if (this.isAuthenticated()) {
-                            return <MyGame {...props}
+                            return <Game {...props}
                                 games={this.state.games}
                                 genres={this.state.genres}
                                 platforms={this.state.platforms}
@@ -149,210 +165,20 @@ export default class ApplicationViews extends Component {
                         }
                     }} />
 
-                {/* <Route path="/my-games/:platformId(\d+)" render={(props) => {
-                    return <GameDetail {...props}
-                        games={this.state.games}
-                        genres={this.state.genres}
-                        platforms={this.state.platforms}
-                        addGame={this.addGame}
-                        editGame={this.editGame}
-                        deleteGame={this.deleteGame} />
-                }} /> */}
-                {/* <Route
-                    path="/news/new" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <NewsForm {...props}
-                                news={this.state.news}
-                                addNewArticle={this.addNewArticle}
-                                activeUser={this.state.activeUser}
-                            />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-
-                    }} />
-                <Route
-                    path="/news/:newsId(\d+)/edit" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <NewsEditForm {...props}
-                                news={this.state.news}
-                                editArticle={this.editArticle}
-                                activeUser={this.state.activeUser}
-                            />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-
-                    }} />
-
-
-                <Route
-                    exact path="/events" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <EventList {...props} events={this.state.events} deleteEvent={this.deleteEvent} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-
-                    }}
-                />
-                <Route
-                    path="/events/new" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <EventForm  {...props} events={this.state.events} addEvent={this.addEvent} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }}
-                />
-                <Route
-                    path="/events/:eventId(\d+)/edit" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <EventEditForm  {...props} events={this.state.events} updateEvent={this.updateEvent} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }}
-                />
-
-
                 <Route
                     path="/friends" render={props => {
                         if (this.isAuthenticated()) {
-                            return <FriendList {...props}
-                                friends={this.state.friends}
-                                activeUser={this.state.activeUser}
-                                users={this.state.users}
-                                friendsWithStuff={this.state.friendsWithStuff}
-                                getFriendsWithStuff={this.getFriendsWithStuff}
-                                buildFriendArray={this.buildFriendArray}
-                                checkUsername={this.checkUserName}
-                                currentUsername={this.state.currentUsername}
-                                addNewFriend={this.addNewFriend}
-                                deleteFriend={this.deleteFriend} />
-                        }
-                        else {
-                            return <Redirect to="/login" />
-                        }
-                    }}
-                />
-
-                <Route
-                    exact path="/notes" render={props => {
-                        if (this.isAuthenticated()) {
-
-                            return <NoteList {...props}
-                                deleteNote={this.deleteNote}
-                                addNote={this.addNote}
-                                notes={this.state.notes}
-
+                            return <Friend {...props}
+                            activeUser={this.state.activeUser}
+                            addNewFriend={this.addNewFriend}
+                            friends={this.state.friends}
                             />
                         } else {
-                            return <Redirect to="/login" />
-                        }
-                    }}
-                />
-
-
-
-                <Route exact path="/notes/new" render={(props) => {
-                    if (this.isAuthenticated()) {
-
-                        return <NoteForm {...props}
-                            addNote={this.addNote}
-                            notes={this.state.notes}
-
-                        />
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-
-                }} />
-                <Route
-                    exact path="/notes/:noteId(\d+)/edit" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <NoteEditForm  {...props} notes={this.state.notes} updateNote={this.updateNote} />
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-                    }}
-                />
-
-                <Route
-                    path="/messages" render={props => {
-                        if (this.isAuthenticated()) {
-                            return <MessageList {...props}
-                                activeUser={this.state.activeUser}
-                                messages={this.state.messages}
-                                deleteMessage={this.deleteMessage}
-                                addNewMessage={this.addNewMessage}
-                                editMessage={this.editMessage}
-                                addNewFriend={this.addNewFriend}
-                                friendsWithStuff={this.state.friendsWithStuff}
-                                currentUsername={this.state.currentUsername} />
-
-                        } else {
-                            return <Redirect to="/login" />
+                            return <Redirect to="/" />
                         }
 
+                    }} />
 
-                    }}
-                />
-
-                <Route
-                    exact path="/tasks" render={props => {
-                        if (this.isAuthenticated()) {
-                            return (
-                                <TaskList {...props} tasks={this.state.tasks} addTask={this.addTask} completeTask={this.completeTask} />
-                            )
-                        } else {
-                            return <Redirect to="/login" />
-                        }
-
-
-                    }}
-                />
-
-                <Route path="/tasks/:taskId(\d+)/edit" render={props => {
-                    if (this.isAuthenticated()) {
-                        return (
-                            <TaskEditForm {...props} tasks={this.state.tasks} updateTask={this.updateTask} />
-                        )
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-
-                }} />
-
-                <Route exact path="/tasks/new" render={props => {
-                    if (this.isAuthenticated()) {
-                        return (
-                            <TaskForm {...props} tasks={this.state.tasks} addTask={this.addTask} />
-                        )
-                    } else {
-                        return <Redirect to="/login" />
-                    }
-
-                }} />
-
-                <Route path="/register" render={props => {
-                    return (
-                        <RegisterForm {...props} users={this.state.users} checkUserEmail={this.checkUserEmail} checkUserName={this.checkUserName}
-                            addUser={this.addUser} mountUponLogin={this.mountUponLogin} />
-                    )
-                }} />
-
-                <Route exact path="/login" render={props => {
-                    return (
-                        <LoginForm {...props} checkUserName={this.checkUserName} loginCheck={this.loginCheck} checkUserEmail={this.checkUserEmail} users={this.state.users} mountUponLogin={this.mountUponLogin} />
-                    )
-                }} />
-
-                <Route path="/tasks/new" render={props => {
-                    return (
-                        <NewModalForm {...props} tasks={this.state.tasks} />
-                    )
-                }} /> */}
 
             </React.Fragment>
         );

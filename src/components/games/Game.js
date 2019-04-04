@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AddGame from "./AddGame";
 import GameList from "./GameList";
 // import GameNav from "./GameNav"
-export default class MyGame extends Component {
+export default class Game extends Component {
   render() {
     return (
       <React.Fragment>
