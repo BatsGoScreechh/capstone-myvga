@@ -135,18 +135,6 @@
     },
     {
       "userId": 1,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "id": 4
-    },
-    {
-      "userId": 1,
       "otherFriendId": 4,
       "id": 5
     }

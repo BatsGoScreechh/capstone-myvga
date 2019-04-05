@@ -79,7 +79,7 @@ console.log(friendToAdd)
                 <section className="friendsSection">
                     <h1>Friends</h1>
                     <div className="friends-list">
-                        {this.props.friends.map(friend => (
+                        {this.props.users.map(friend => (
                             <ul className="library-list">
                                 <li key={friend.otherFriendId} className="friend-table">{friend.otherFriendId}</li>
                             </ul>
