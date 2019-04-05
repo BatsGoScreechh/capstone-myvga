@@ -30,8 +30,29 @@
       "title": "Morrowind",
       "genreId": 2,
       "platformId": 1,
-      "userId": 1,
-      "id": 1
+      "userId": "1",
+      "id": 6
+    },
+    {
+      "title": "Witcher 2",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "title": "Metal Gear Solid V",
+      "genreId": 8,
+      "platformId": 4,
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "title": "Mass Effect",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "1",
+      "id": 9
     }
   ],
   "genres": [
@@ -111,6 +132,23 @@
       "userId": 1,
       "otherFriendId": 2,
       "id": 1
+    },
+    {
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "otherFriendId": 4,
+      "id": 5
     }
   ],
   "messages": [

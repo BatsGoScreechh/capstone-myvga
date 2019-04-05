@@ -69,15 +69,57 @@ export default class ApplicationViews extends Component {
 
     //** Friends Function **//
 
-    // addFriend = (friend) => {
-    //     GameAPIManager.addFriend(friend)
-    //         .then(() => GameAPIManager.getAllFriends(this.state.activeUser))
-    //         .then(friends => this.setState({
-    //             friends: friends
-    //         }
-    //         ))
-    // }
+    addNewFriend = (friendObject) => {
+        return FriendAPIManager.addNewFriend(friendObject)
+            .then(FriendAPIManager.getAllFriends)
+            .then(friends => {
+                this.setState({ friends: friends })
+                // this.buildFriendArray(friends, this.state.users)
+            })
+    }
 
+    deleteFriend = (id) => {
+        return FriendAPIManager.deleteFriend(id)
+            .then(FriendAPIManager.getAllFriends)
+            .then(friends => {
+                this.setState({ friends: friends })
+                // this.buildFriendArray(friends, this.state.users)
+            })
+    }
+
+    //       buildFriendArray = (friends, users) => {
+    //     const activeUser = parseInt(sessionStorage.getItem("activeUser"))
+
+    //     // find all the friends when the active user is in the userId place
+    //     const filteredbyUser = friends.filter((friend) => {
+    //       return friend.userId === activeUser
+    //     })
+
+    //     const mappedbyUser = filteredbyUser.map((each) => [each.otherFriendId, each.id])
+    //     console.log(mappedbyUser)
+
+    //     // find all the friends when the active user is in the otherFriendId place
+    //     const filteredbyFriend = friends.filter((friend) => friend.otherFriendId === activeUser)
+    //     const mappedbyFriend = filteredbyFriend.map((each) => [each.userId, each.id])
+    //     // console.log(mappedbyFriend)
+    //     // Concatenate the arrays together to form one array
+    //     const friendArray = mappedbyFriend.concat(mappedbyUser)
+    //     console.log(friendArray)
+    //     friendArray.forEach(id => {
+    //       console.log("id", id)
+    //       const friendWithStuff = users.find((user) => user.id === id[0])
+    //       // Attach the friendship id to the friend object
+    //       friends.friendshipId=id[1]
+    //       console.log(friendWithStuff)
+
+    //     })
+    //     UserAPIManager.getSingleUser(activeUser)
+    //       .then(user => { this.setState({ currentUsername: user.username }) })
+
+
+    //     // return friendsWithStuff
+
+    //   }
 
     mountUponLogin = () => {
         const activeUser = sessionStorage.getItem("activeUser")
@@ -169,9 +211,10 @@ export default class ApplicationViews extends Component {
                     path="/friends" render={props => {
                         if (this.isAuthenticated()) {
                             return <Friend {...props}
-                            activeUser={this.state.activeUser}
-                            addNewFriend={this.addNewFriend}
-                            friends={this.state.friends}
+                                activeUser={this.state.activeUser}
+                                users={this.state.users}
+                                addNewFriend={this.addNewFriend}
+                                friends={this.state.friends}
                             />
                         } else {
                             return <Redirect to="/" />

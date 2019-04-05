@@ -1,10 +1,10 @@
-export default {
+const FriendManager = {
 
-    getAllFriends: () => {
-        return fetch(`http://localhost:5002/friends`)
+    getAllFriends: (id) => {
+        return fetch(`http://localhost:5002/friends?userId=${id}`)
             .then(r => r.json())
     },
-    addFriend: (newFriend) => {
+    addNewFriend: (newFriend) => {
         return fetch(`http://localhost:5002/friends`, {
             method: "POST",
             headers: {
@@ -19,9 +19,11 @@ export default {
         })
             .then(r => r.json())
     },
-    getFriendsWithStuff: (id) => {
+    // getFriendsWithStuff: (id) => {
 
-        return fetch(`http://localhost:5002/users/${id}?&_embed=games`)
-            .then(r => r.json())
-    }
+    //     return fetch(`http://localhost:5002/users/${id}?&_embed=games`)
+    //         .then(r => r.json())
+    // }
 }
+
+export default FriendManager;

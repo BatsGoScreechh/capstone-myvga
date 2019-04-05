@@ -29,6 +29,7 @@ export default {
       .then(r => r.json())
   },
   checkName(username) {
+    debugger
     return fetch(`http://localhost:5002/users/?username=${username}`)
       .then(r => r.json())
   },

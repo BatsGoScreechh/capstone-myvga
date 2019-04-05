@@ -27,7 +27,7 @@ export default class AddGame extends Component {
             title: this.state.title,
             genreId: parseInt(this.state.genreId),
             platformId: parseInt(this.state.platformId),
-            userId: sessionStorage.getItem("credentials")
+            userId: sessionStorage.getItem("activeUser")
         };
 
         this.props

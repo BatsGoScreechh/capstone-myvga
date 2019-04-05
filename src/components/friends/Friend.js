@@ -4,15 +4,19 @@ import FriendList from "./FriendList";
 // import GameNav from "./GameNav"
 export default class Friend extends Component {
     render() {
+        console.log(this.props)
+
         return (
+
             <React.Fragment>
 
                 <FriendList
                     {...this.props}
-                    activeUser={sessionStorage.getItem("activeUser")}
-                    addNewFriend={this.addNewFriend}
+                    userId={sessionStorage.getItem("activeUser")}
+                    users={this.props.users}
+                    friendToAdd={this.friendToAdd}
                     friends={this.props.friends}
-
+                    addNewFriend={this.props.addNewFriend}
                 />
 
             </React.Fragment>

@@ -1,31 +1,74 @@
 import React, { Component } from "react"
 // import "./Friends.css"
+import AuthenticationAPIManager from "../../modules/FriendAuthentication"
 import FriendAPIManager from "../../modules/FriendManager"
 import UserAPIManager from "../../modules/UserManager"
 
 export default class FriendList extends Component {
 
-    state = {
-        activeUser: parseInt(this.props.activeUser),
-        friendsWithStuff: "",
-        testState: [],
-        addFriend: "",
-        errorStatement: "",
-        friends: []
 
+
+    state = {
+        userId: parseInt(this.props.userId),
+        addNewFriend: this.props.addNewFriend,
+        // friendsWithStuff: "",
+        // testState: [],
+        friendToAdd: "",
+        errorStatement: "",
+        // friends: [],
+        // otherFriendId: ""
     }
 
-    //Builds form as an object
+    handleFieldChange = evt => {
+        const stateToChange = {};
+        stateToChange[evt.target.id] = evt.target.value;
+        this.setState(stateToChange);
+    };
+
+
+    // componentDidMount = () => {
+    //     let key = this.state.key
+    //     FriendAPIManager.getSingleFriend(key).then(game => {
+    //         this.setState({
+    //             title: game.title,
+    //             genreId: game.genreId,
+    //             platformId: game.platformId
+    //         });
+    //     });
+    // }
+
+    // Builds form as an object
+    AuthenticateFriend = (userId, friendToAdd, otherFriendId) => {
+        UserAPIManager.checkName(this.state.friendToAdd).then(user => {
+            //const returned = AuthenticationAPIManager(user, userId, friendToAdd, otherFriendId)
+console.log(friendToAdd)
+            if (user.length === 0) {
+                this.setState({ errorStatement: "No user with that name" })
+            }
+            else {
+                const newFriend = {
+                    userId: parseInt(sessionStorage.getItem("activeUser")),
+                    otherFriendId: user[0].id
+                }
+                this.props.addNewFriend(newFriend)
+                console.log(user, "NEW FRIEND")
+                this.setState({ errorStatement: "" })
+                this.props.history.push("/friends")
+            }
+
+        }
+        )
+    }
     // constructNewRelationship = evt => {
     //     evt.preventDefault();
     //     const friend = {
-    //         userId: 1,
-    //         otherFriendId: 2,
+    //         activeUser: sessionStorage.getItem("credentials"),
+    //         otherFriendId: parseInt(this.state.friends.otherFriendId),
     //     };
 
     //     this.props
     //         .addFriend(friend)
-    //         window.alert("Friend successfully added.")
+    //     window.alert("Friend successfully added.")
     //     window.location.reload(true);
     // }
 
@@ -35,16 +78,25 @@ export default class FriendList extends Component {
             <React.Fragment>
                 <section className="friendsSection">
                     <h1>Friends</h1>
+                    <div className="friends-list">
+                        {this.props.friends.map(friend => (
+                            <ul className="library-list">
+                                <li key={friend.otherFriendId} className="friend-table">{friend.otherFriendId}</li>
+                            </ul>
+                        ))}
+                    </div>
                     <input
-                        id="addFriend"
+                        id="friendToAdd"
                         type="text"
-                        placeholder="enter username"
+                        placeholder="Enter Username"
                         onChange={this.handleFieldChange}></input>
-                    <button className="btn btn-add-friend btn-secondary"
-                        onClick={() => {
-                            this.AuthenticateFriend(this.state.addFriend, this.props.currentUsername, this.props.friendsWithStuff)
-                        }}
+                    <button className="add-friend"
+                        onClick={() =>
+                            // console.log(this.state)
+                            this.AuthenticateFriend(this.state.addFriend, this.props.userId, this.props.otherFriendId)
 
+                            // this.AuthenticateFriend
+                        }
                     >
                         Add a Friend</button>
                     <span className="errorStatement">{this.state.errorStatement}</span>
