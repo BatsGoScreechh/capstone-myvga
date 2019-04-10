@@ -32,8 +32,8 @@ export default class AddGame extends Component {
 
         this.props
             .addGame(game)
-            window.alert("Game successfully added to library.")
-        window.location.reload(true);
+        window.alert("Game successfully added to library.")
+        this.setState()
     }
 
     render() {
@@ -80,7 +80,7 @@ export default class AddGame extends Component {
                     }
                 </select >
                 <button type="button"
-                    className="submit-game-button"
+                    className="btn-table"
                     onClick={this.constructNewGame}
                 >
                     Add Game

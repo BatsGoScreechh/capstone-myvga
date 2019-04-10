@@ -9,7 +9,7 @@ import Game from "./games/Game"
 import Register from "./authentication/RegisterForm"
 import Login from "./authentication/Login"
 import Friend from "./friends/Friend"
-
+import Welcome from "./authentication/Welcome"
 
 export default class ApplicationViews extends Component {
 
@@ -19,7 +19,10 @@ export default class ApplicationViews extends Component {
         genres: [],
         platforms: [],
         friends: [],
+        friendId: "",
+        username: "",
         activeUser: sessionStorage.getItem("activeUser"),
+        friendArray: []
     }
 
     //** Game Functions **//
@@ -83,43 +86,53 @@ export default class ApplicationViews extends Component {
             .then(FriendAPIManager.getAllFriends)
             .then(friends => {
                 this.setState({ friends: friends })
-                // this.buildFriendArray(friends, this.state.users)
             })
     }
 
-    //       buildFriendArray = (friends, users) => {
-    //     const activeUser = parseInt(sessionStorage.getItem("activeUser"))
+    // getFriendName = (userId) => {
+    //     let userArray = []
+    //     let friendArray = []
+    //     return FriendAPIManager.getFriendsByUser(this.state.activeUser)
+    //         .then(() => userArray.concat(this.state.activeUser))
+    //         .then(() => FriendAPIManager.getFriendsbyFriend(this.state.activeUser, userId))
+    //         .then(() => friendArray.concat(this.state.activeUser, userId))
+    //         .then(() => userArray.concat(friendArray))
+    //         .then(friendArray => {
+    //             this.setState({ fullArray: friendArray })
 
-    //     // find all the friends when the active user is in the userId place
-    //     const filteredbyUser = friends.filter((friend) => {
-    //       return friend.userId === activeUser
-    //     })
+    //         }
+    //         )
 
-    //     const mappedbyUser = filteredbyUser.map((each) => [each.otherFriendId, each.id])
-    //     console.log(mappedbyUser)
+    getFriendName = (userId) => {
+        let friendUserArray = []
+        let friendArray = []
+        let userArray = []
+        let filteredFriends = []
+        return FriendAPIManager.getFriendsByUser(this.state.activeUser)
+            .then((friendsByUser) => {
+                friendUserArray = friendsByUser.concat(friendUserArray)
+            })
+            .then(() => {
+                return FriendAPIManager.getFriendsbyFriend(userId)
+            }).then((secondDBCall) => {
+                friendArray = secondDBCall.concat(friendArray)
+            }).then(() => {
+                return UserAPIManager.getAllUsers()
+            }).then((allUsers) => {
+                userArray = allUsers.concat(userArray)
+            })
+            .then(() => {
+                this.setState({ friendArray: friendArray })
+            }).then(() => {
+                let friendFilterArray = friendUserArray.map(friend => {
+                    userArray.find(
+                        a => a.id === parseInt(friend.otherFriendId))
+                        return friendFilterArray
+                })
+            })
+    }
 
-    //     // find all the friends when the active user is in the otherFriendId place
-    //     const filteredbyFriend = friends.filter((friend) => friend.otherFriendId === activeUser)
-    //     const mappedbyFriend = filteredbyFriend.map((each) => [each.userId, each.id])
-    //     // console.log(mappedbyFriend)
-    //     // Concatenate the arrays together to form one array
-    //     const friendArray = mappedbyFriend.concat(mappedbyUser)
-    //     console.log(friendArray)
-    //     friendArray.forEach(id => {
-    //       console.log("id", id)
-    //       const friendWithStuff = users.find((user) => user.id === id[0])
-    //       // Attach the friendship id to the friend object
-    //       friends.friendshipId=id[1]
-    //       console.log(friendWithStuff)
 
-    //     })
-    //     UserAPIManager.getSingleUser(activeUser)
-    //       .then(user => { this.setState({ currentUsername: user.username }) })
-
-
-    //     // return friendsWithStuff
-
-    //   }
 
     mountUponLogin = () => {
         const activeUser = sessionStorage.getItem("activeUser")
@@ -142,7 +155,6 @@ export default class ApplicationViews extends Component {
             .then(() => PlatformAPIManager.getAllPlatforms())
             .then(platforms => newState.platforms = platforms)
             .then(() => {
-                // this.buildFriendArray(newState.friends, newState.users)
                 this.setState(newState)
             })
     }
@@ -155,20 +167,18 @@ export default class ApplicationViews extends Component {
         return sessionStorage.getItem("activeUser") !== null
     }
 
-    // when login/register route is created, the onClick function will be handled here.
-    // Set session storage, make api calls to get news/events/chat etc for this user
-    // and set the state.
-
-
-
-
-
     render() {
         console.log(this.state)
         return (
             <React.Fragment>
                 <Route
                     exact path="/" render={props => {
+                        return <Welcome {...props}
+                        />
+                    }
+                    } />
+                <Route
+                    exact path="/login" render={props => {
                         return <Login {...props}
                             users={this.state.users}
                             checkEmail={this.checkEmail}
@@ -176,6 +186,7 @@ export default class ApplicationViews extends Component {
                             addUser={this.addUser}
                             mountUponLogin={this.mountUponLogin}
                             checkLogin={this.checkLogin}
+                            getFriendName={this.getFriendName}
                         />
                     }
                     } />
@@ -203,7 +214,7 @@ export default class ApplicationViews extends Component {
                             />
                         }
                         else {
-                            return <Redirect to="/" />
+                            return <Redirect to="/login" />
                         }
                     }} />
 
@@ -215,6 +226,12 @@ export default class ApplicationViews extends Component {
                                 users={this.state.users}
                                 addNewFriend={this.addNewFriend}
                                 friends={this.state.friends}
+                                deleteFriend={this.deleteFriend}
+                                username={this.state.username}
+                                friendId={this.state.friendId}
+                                getFriendName={this.getFriendName}
+                                fullArray={this.state.fullArray}
+
                             />
                         } else {
                             return <Redirect to="/" />

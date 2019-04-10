@@ -19,6 +19,18 @@ const FriendManager = {
         })
             .then(r => r.json())
     },
+
+    getFriendsByUser: (id) => {
+        return fetch(`http://localhost:5002/friends?userId=${id}`)
+        .then(r => r.json())
+
+    },
+
+    getFriendsbyFriend: (id) => {
+        return fetch(`http://localhost:5002/friends?otherFriendId=${id}`)
+        .then(r => r.json())
+
+    }
     // getFriendsWithStuff: (id) => {
 
     //     return fetch(`http://localhost:5002/users/${id}?&_embed=games`)

@@ -1,7 +1,7 @@
 export default {
 
   getAllUsers: () => {
-    return fetch("http://localhost:5002/users?_embed=games")
+    return fetch("http://localhost:5002/users?_embed=games&_embed=friends")
       .then(r => r.json())
   },
   getSingleUser: (id) => {
@@ -29,7 +29,6 @@ export default {
       .then(r => r.json())
   },
   checkName(username) {
-    debugger
     return fetch(`http://localhost:5002/users/?username=${username}`)
       .then(r => r.json())
   },

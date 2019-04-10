@@ -2,7 +2,7 @@
   "users": [
     {
       "username": "BatsGoScreechh",
-      "password": "password",
+      "password": "a",
       "email": "bird11@mctc.edu",
       "id": 1
     },
@@ -15,7 +15,7 @@
     {
       "username": "David",
       "email": "d",
-      "password": "",
+      "password": "a",
       "id": 3
     },
     {
@@ -53,6 +53,13 @@
       "platformId": 1,
       "userId": "1",
       "id": 9
+    },
+    {
+      "title": "The Sims 4",
+      "genreId": 4,
+      "platformId": 2,
+      "userId": "1",
+      "id": 10
     }
   ],
   "genres": [
@@ -130,12 +137,22 @@
   "friends": [
     {
       "userId": 1,
-      "otherFriendId": 2,
-      "id": 1
+      "otherFriendId": 4,
+      "id": 2
     },
     {
       "userId": 1,
-      "otherFriendId": 4,
+      "otherFriendId": 3,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "otherFriendId": 1,
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "otherFriendId": 3,
       "id": 5
     }
   ],

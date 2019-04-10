@@ -1,9 +1,7 @@
 import React, { Component } from "react"
 // import "./Friends.css"
-import AuthenticationAPIManager from "../../modules/FriendAuthentication"
-import FriendAPIManager from "../../modules/FriendManager"
 import UserAPIManager from "../../modules/UserManager"
-
+import FriendAPIManager from "../../modules/FriendManager"
 export default class FriendList extends Component {
 
 
@@ -11,6 +9,7 @@ export default class FriendList extends Component {
     state = {
         userId: parseInt(this.props.userId),
         addNewFriend: this.props.addNewFriend,
+        getFriendName: this.props.getFriendName,
         // friendsWithStuff: "",
         // testState: [],
         friendToAdd: "",
@@ -25,23 +24,20 @@ export default class FriendList extends Component {
         this.setState(stateToChange);
     };
 
-
     // componentDidMount = () => {
-    //     let key = this.state.key
-    //     FriendAPIManager.getSingleFriend(key).then(game => {
+    //     this.props.getFriendName(this.state.friends).then(friend => {
     //         this.setState({
-    //             title: game.title,
-    //             genreId: game.genreId,
-    //             platformId: game.platformId
+
+    //             otherFriendId: friend.otherFriendId,
+    //             // password: friend.password,
+    //             // platformId: friend.platformId
     //         });
     //     });
     // }
 
-    // Builds form as an object
-    AuthenticateFriend = (userId, friendToAdd, otherFriendId) => {
+    // Makes sure friend's username is in database
+    AuthenticateFriend = () => {
         UserAPIManager.checkName(this.state.friendToAdd).then(user => {
-            //const returned = AuthenticationAPIManager(user, userId, friendToAdd, otherFriendId)
-console.log(friendToAdd)
             if (user.length === 0) {
                 this.setState({ errorStatement: "No user with that name" })
             }
@@ -51,14 +47,22 @@ console.log(friendToAdd)
                     otherFriendId: user[0].id
                 }
                 this.props.addNewFriend(newFriend)
-                console.log(user, "NEW FRIEND")
                 this.setState({ errorStatement: "" })
-                this.props.history.push("/friends")
+                this.setState()
+
             }
 
         }
         )
     }
+
+    // getNameOfFriends = (activeUser, friendId) => {
+    //     getFriendName()
+    // }
+
+    // getFriendName = () => {
+    //     FriendAPIManager.getFriendsByUser.concat(FriendAPIManager.getFriendsbyFriend)
+    // }
     // constructNewRelationship = evt => {
     //     evt.preventDefault();
     //     const friend = {
@@ -72,17 +76,37 @@ console.log(friendToAdd)
     //     window.location.reload(true);
     // }
 
-    render() {
 
+    render() {
         return (
             <React.Fragment>
                 <section className="friendsSection">
                     <h1>Friends</h1>
                     <div className="friends-list">
-                        {this.props.users.map(friend => (
-                            <ul className="library-list">
-                                <li key={friend.otherFriendId} className="friend-table">{friend.otherFriendId}</li>
-                            </ul>
+
+                        {this.props.friends.map(friend => (
+
+                            <div>
+
+                                <ul className="friend-list">
+                                    <li key={friend.otherFriendId} className="friend-table">{friend.username}</li>
+                                </ul>
+
+                                <div key={friend.id} className="friendCard">
+                                    <div className="card">
+                                        <div className="card-title">
+                                            <button className="btn-table" id={friend.id}
+                                                onClick={() => {
+                                                    console.log(this.props.getFriendName)
+                                                    //     this.props.deleteFriend(friend.id)
+                                                    //     this.setState()
+                                                }}
+                                            >
+                                                Delete Friend</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </div>
                     <input
@@ -94,35 +118,14 @@ console.log(friendToAdd)
                         onClick={() =>
                             // console.log(this.state)
                             this.AuthenticateFriend(this.state.addFriend, this.props.userId, this.props.otherFriendId)
-
-                            // this.AuthenticateFriend
                         }
                     >
                         Add a Friend</button>
+                    <br></br>
                     <span className="errorStatement">{this.state.errorStatement}</span>
-                    <div className="friendList">
-                        {this.props.friends.map((friend) =>
-                            <div key={friend.id} className="friendCard">
-                                <div className="card">
-                                    <div className="card-title">
-
-                                        <span className="friendName">{friend.username}</span><button className="btn-sm btn-del-friend btn-danger"
-                                            onClick={() => {
-                                                // need to figure out friendship ID!!
-                                                // this.props.deleteFriend(friend.friendshipId)
-                                                // this.props.history.push("/friends")
-                                            }}>Delete Friend</button>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        )}</div>
 
                 </section>
-            </React.Fragment>
+            </React.Fragment >
         )
 
     }
