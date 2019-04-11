@@ -33,7 +33,7 @@ export default class AddGame extends Component {
         this.props
             .addGame(game)
         window.alert("Game successfully added to library.")
-        this.setState()
+        this.props.history.push("/my-games")
     }
 
     render() {

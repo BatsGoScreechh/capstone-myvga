@@ -32,5 +32,10 @@ export default {
         },
         body: JSON.stringify(editedGame)
       }).then(data => data.json());
+    },
+
+    getGames() {
+      return fetch(`http://localhost:5002/games`)
+      .then (r => r.json())
     }
 }

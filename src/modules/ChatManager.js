@@ -5,7 +5,7 @@ export default {
             .then(chats => chats.json())
     },
 
-    getOneMessage: (id) => {
+    getSingleMessage: (id) => {
         return fetch(`http://localhost:5002/messages/${id}`)
             .then(chats => chats.json())
 

@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
             if (user.length > 0) {
                 sessionStorage.setItem("activeUser", user[0].id)
                 this.props.mountUponLogin()
-                this.props.getFriendName(user[0].id)
+                // this.props.getFriendName(user[0].id)
                 this.props.history.push("/my-games")
             } else {
                 console.log(user)

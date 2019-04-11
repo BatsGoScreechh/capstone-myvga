@@ -8,7 +8,7 @@
     },
     {
       "username": "KittysGoMeoww",
-      "password": "password",
+      "password": "a",
       "email": "a@a.com",
       "id": 2
     },
@@ -30,7 +30,7 @@
       "title": "Morrowind",
       "genreId": 2,
       "platformId": 1,
-      "userId": "1",
+      "userId": "2",
       "id": 6
     },
     {
@@ -60,6 +60,20 @@
       "platformId": 2,
       "userId": "1",
       "id": 10
+    },
+    {
+      "title": "World of Warcraft",
+      "genreId": 3,
+      "platformId": 3,
+      "userId": "2",
+      "id": 12
+    },
+    {
+      "title": "Battlefield 3",
+      "genreId": 1,
+      "platformId": 2,
+      "userId": "2",
+      "id": 13
     }
   ],
   "genres": [
@@ -158,9 +172,24 @@
   ],
   "messages": [
     {
-      "userId": 1,
-      "message": "Hello, World",
-      "id": 1
+      "message": "Hello",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "message": "wut?",
+      "userId": "2",
+      "id": 3
+    },
+    {
+      "message": "Hi",
+      "userId": "2",
+      "id": 4
+    },
+    {
+      "message": "Hi",
+      "userId": "1",
+      "id": 5
     }
   ]
 }

@@ -53,7 +53,6 @@ export default class GameList extends Component {
         this.setState({
             matchingGames: matchingGames
         })
-console.log(this.state)
     }
 
     render() {
@@ -64,7 +63,7 @@ console.log(this.state)
                     <section className="games">
                         <h1 htmlFor="Game">My Game Library</h1>
                         {this.props.platforms.map(p => (
-                            <nav className="navbar">
+                            <nav className="platform-nav">
                                 <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
                             </nav>
                         ))}
@@ -155,8 +154,7 @@ console.log(this.state)
                                                     onClick={() => {
                                                         this.props.deleteGame(game.id)
                                                         window.alert("Game successfully deleted from library.")
-                                                        this.setState()
-                                                    }}
+                                                        this.props.history.push("/my-games")                                                    }}
                                                 >
                                                     Delete
                                                 </button>
