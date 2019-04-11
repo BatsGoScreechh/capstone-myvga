@@ -3,13 +3,11 @@ import React, { Component } from "react";
 import UserAPIManager from "../modules/UserManager"
 import GameAPIManager from "../modules/GameManager"
 import GenreAPIManager from "../modules/GenreManager"
-// import FriendAPIManager from "../modules/FriendManager"
 import PlatformAPIManager from "../modules/PlatformManager"
 import ChatAPIManager from "../modules/ChatManager"
 import Game from "./games/Game"
-import Register from "./authentication/RegisterForm"
+import RegisterForm from "./authentication/RegisterForm"
 import Login from "./authentication/Login"
-// import Friend from "./friends/Friend"
 import Welcome from "./authentication/Welcome"
 import Chat from "./chat/Chat"
 
@@ -213,7 +211,7 @@ export default class ApplicationViews extends Component {
 
                 <Route
                     exact path="/register" render={props => {
-                        return <Register {...props}
+                        return <RegisterForm {...props}
                             users={this.state.users}
                             checkEmail={this.checkEmail}
                             checkName={this.checkName}
