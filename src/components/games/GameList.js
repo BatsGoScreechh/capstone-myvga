@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GameAPIManager from '../../modules/GameManager'
+// import GameNav from "./GameNav"
 
 export default class GameList extends Component {
 
@@ -27,7 +28,7 @@ export default class GameList extends Component {
                 title: this.state.title,
                 genreId: parseInt(this.state.genreId),
                 platformId: parseInt(this.state.platformId),
-                // userId: sessionStorage.getItem("credentials")
+                userId: sessionStorage.getItem("credentials")
             };
             this.props.updateGame(editedGame)
                 .then(() => this.props.history.push("/my-games"))
@@ -52,8 +53,8 @@ export default class GameList extends Component {
         this.setState({
             matchingGames: matchingGames
         })
-
     }
+
     render() {
         if (this.state.matchingGames.length === 0) {
             return (
@@ -62,7 +63,7 @@ export default class GameList extends Component {
                     <section className="games">
                         <h1 htmlFor="Game">My Game Library</h1>
                         {this.props.platforms.map(p => (
-                            <nav className="navbar">
+                            <nav className="platform-nav">
                                 <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
                             </nav>
                         ))}
@@ -127,7 +128,7 @@ export default class GameList extends Component {
                                             <button
                                                 type="submit"
                                                 onClick={this.constructEditGame}
-                                                className="submit-game-button">Submit</button>
+                                                className="btn-table">Submit</button>
                                         </div>
                                     </div>
                                 } else {
@@ -138,7 +139,7 @@ export default class GameList extends Component {
                                                 <li key={game.genreId} className="genre-table">
                                                     {game.genre.name}</li>
                                             </ul>
-                                            <div className="button-table">
+                                            <div className="btn-table">
                                                 <button className="edit-button" id={game.id}
                                                     onClick={() => {
                                                         this.setState({
@@ -149,12 +150,11 @@ export default class GameList extends Component {
                                                 > Edit</button>
                                                 <button
                                                     type="button"
-                                                    className="delete-button"
+                                                    className="btn-table"
                                                     onClick={() => {
                                                         this.props.deleteGame(game.id)
                                                         window.alert("Game successfully deleted from library.")
-                                                        window.location.reload(true)
-                                                    }}
+                                                        this.props.history.push("/my-games")                                                    }}
                                                 >
                                                     Delete
                                                 </button>

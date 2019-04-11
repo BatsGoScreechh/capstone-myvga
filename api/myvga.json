@@ -2,23 +2,78 @@
   "users": [
     {
       "username": "BatsGoScreechh",
-      "password": "password",
+      "password": "a",
       "email": "bird11@mctc.edu",
       "id": 1
     },
     {
       "username": "KittysGoMeoww",
-      "password": "password",
+      "password": "a",
       "email": "a@a.com",
       "id": 2
+    },
+    {
+      "username": "David",
+      "email": "d",
+      "password": "a",
+      "id": 3
+    },
+    {
+      "username": "a",
+      "email": "b@b.com",
+      "password": "a",
+      "id": 4
     }
   ],
   "games": [
     {
-      "id": 2,
+      "title": "Morrowind",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "2",
+      "id": 6
+    },
+    {
+      "title": "Witcher 2",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "title": "Metal Gear Solid V",
+      "genreId": 8,
+      "platformId": 4,
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "title": "Mass Effect",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "1",
+      "id": 9
+    },
+    {
       "title": "The Sims 4",
       "genreId": 4,
-      "platformId": 2
+      "platformId": 2,
+      "userId": "1",
+      "id": 10
+    },
+    {
+      "title": "World of Warcraft",
+      "genreId": 3,
+      "platformId": 3,
+      "userId": "2",
+      "id": 12
+    },
+    {
+      "title": "Battlefield 3",
+      "genreId": 1,
+      "platformId": 2,
+      "userId": "2",
+      "id": 13
     }
   ],
   "genres": [
@@ -96,15 +151,45 @@
   "friends": [
     {
       "userId": 1,
-      "otherFriendId": 2,
-      "id": 1
+      "otherFriendId": 4,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "otherFriendId": 3,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "otherFriendId": 1,
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "otherFriendId": 3,
+      "id": 5
     }
   ],
   "messages": [
     {
-      "userId": 1,
-      "message": "Hello, World",
-      "id": 1
+      "message": "Hello",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "message": "wut?",
+      "userId": "2",
+      "id": 3
+    },
+    {
+      "message": "Hi",
+      "userId": "2",
+      "id": 4
+    },
+    {
+      "message": "Hi",
+      "userId": "1",
+      "id": 5
     }
   ]
 }

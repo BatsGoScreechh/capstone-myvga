@@ -27,13 +27,13 @@ export default class AddGame extends Component {
             title: this.state.title,
             genreId: parseInt(this.state.genreId),
             platformId: parseInt(this.state.platformId),
-            userId: this.state.userId
+            userId: sessionStorage.getItem("activeUser")
         };
 
         this.props
             .addGame(game)
-            window.alert("Game successfully added to library.")
-        window.location.reload(true);
+        window.alert("Game successfully added to library.")
+        this.props.history.push("/my-games")
     }
 
     render() {
@@ -80,7 +80,7 @@ export default class AddGame extends Component {
                     }
                 </select >
                 <button type="button"
-                    className="submit-game-button"
+                    className="btn-table"
                     onClick={this.constructNewGame}
                 >
                     Add Game

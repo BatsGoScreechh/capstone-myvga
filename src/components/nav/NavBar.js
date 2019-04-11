@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Redirect, Link, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 class NavBar extends Component {
@@ -13,11 +13,11 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/my-games">My Games</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Friends</Link>
+                        <Link className="nav-link" to="/chat">Chat</Link>
                     </li>
                     <li className=
                         "nav-item">
-                        <Link className="nav-link" to="/login" onClick={this.props.handleLogout}>Log Out</Link>
+                        <Link className="nav-link" to="/" onClick={this.props.handleLogout}>Log Out</Link>
                     </li>
 
                 </ul>
