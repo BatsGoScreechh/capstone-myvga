@@ -1,11 +1,15 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import "./NavBar.css"
 
 
 class NavBar extends Component {
 
-    render() {
 
+    isAuthenticated = () => sessionStorage.getItem("userId") !== null
+
+
+    render() {
         return (
             <nav className="navbar">
                 <ul className="nav-unordered-list">

@@ -1,0 +1,13 @@
+.nav-unordered-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none;
+
+}
+

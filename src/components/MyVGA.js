@@ -4,9 +4,16 @@ import ApplicationViews from "./ApplicationViews";
 import "./MyVGA.css";
 
 class MyVGA extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNavbarHidden: false
+    };
+  }
   state = {
-    isLoggedIn: true,
     activeUser: sessionStorage.getItem("activeUser"),
+    isNavbarHidden: false
+
   }
 
   handleLogout = evt => {
@@ -17,17 +24,17 @@ class MyVGA extends Component {
 
   isAuthenticated = () => {
     return sessionStorage.getItem("activeUser") !== null
-}
+  }
 
   render() {
-    if (this.state.isLoggedIn !== false) {
-      return (
+    return (
+      <div>
         <React.Fragment>
           <NavBar handleLogout={this.handleLogout} />
           <ApplicationViews />
         </React.Fragment>
-      );
-    }
+      </div>
+    )
   }
 }
 

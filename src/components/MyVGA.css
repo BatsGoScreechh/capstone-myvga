@@ -1,0 +1,12 @@
+body {
+    background-image: url("./papyrus.jpg");
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* padding-bottom: 200px; */
+}
+
+body {
+    background-color: #000;
+}
