@@ -6,8 +6,39 @@
     text-decoration: none;
 }
 
+.nav-item {
+    padding: auto;
+}
 .nav-link {
     text-decoration: none;
+    color: gold;
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 18px;
+}
+
+.nav-link:hover {
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 5px #000;
+}
+
+.nav-link:active{
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 3px #000;
+}
+.navbar {
+    background-image:url(../authentication/papyrus.jpg);
+    background-color: rgb(0,0,0,0.8);
+    background-size: 100%;
+    border: 1px solid gold;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.nav-body {
+    background-color: rgb(0,0,0,.8);
 
 }
 

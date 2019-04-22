@@ -1,12 +1,12 @@
 export default {
 
     getSingleGenre: () => {
-        return fetch(`https://vgadb.herokuapp.com/genres`)
+        return fetch(`http://localhost:5002/genres`)
             .then(r => r.json())
     },
 
     getAllGenres: () => {
-        return fetch(`https://vgadb.herokuapp.com/genres?_embed=games`)
+        return fetch(`http://localhost:5002/genres?_embed=games`)
             .then(r => r.json())
     }
 }

@@ -11,21 +11,14 @@ export default class Welcome extends Component {
         return (
             <React.Fragment>
                 <div className="welcome">
-
                     <div className="welcome-body">
-
                         <div className="welcome-logo">
-                            <img src={title} alt="title" id="title"></img>
-
-                            {/* <div className="welcome-message">
-                            Welcome to My Video Game Athenaeum!
-                    </div> */}
-
+                            <img src={title} alt="app-title" id="app-title"></img>
                             <img src={logo} alt="logo" id="logo"></img>
-                        <div className="welcome-btn-container">
-                            <img src={login} type="login" className="btn" onClick={() => { this.props.history.push("/login") }}></img>
-                            <br></br>
-                            <img src={register} type="register" className="btn" onClick={() => { this.props.history.push("/register") }}></img>
+                            <div className="welcome-btn-container">
+                                <img src={login} type="login" className="btn" onClick={() => { this.props.history.push("/login") }}></img>
+
+                                <img src={register} type="register" className="btn" onClick={() => { this.props.history.push("/register") }}></img>
                             </div>
 
                         </div>

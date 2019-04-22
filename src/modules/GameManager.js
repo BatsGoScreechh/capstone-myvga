@@ -1,22 +1,22 @@
 export default {
 
     getAllGames: (id) => {
-      return fetch(`https://vgadb.herokuapp.com/games?_expand=genre&_expand=platform&userId=${id}`)
+      return fetch(`http://localhost:5002/games?_expand=genre&_expand=platform&userId=${id}`)
         .then(r => r.json())
     },
     getSingleGame: (id) => {
-      return fetch(`https://vgadb.herokuapp.com/games/${id}`)
+      return fetch(`http://localhost:5002/games/${id}`)
         .then(r => r.json())
     },
     deleteGame: (id) => {
-      return fetch(`https://vgadb.herokuapp.com/games/${id}`, {
+      return fetch(`http://localhost:5002/games/${id}`, {
         method: "DELETE"
       })
-        .then(() => fetch(`https://vgadb.herokuapp.com/games?_expand=genre&_expand=platform`))
+        .then(() => fetch(`http://localhost:5002/games?_expand=genre&_expand=platform`))
         .then(e => e.json())
     },
     addNewGame(newGame) {
-      return fetch(`https://vgadb.herokuapp.com/games`, {
+      return fetch(`http://localhost:5002/games`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -25,7 +25,7 @@ export default {
       }).then(data => data.json())
     },
     updateGame(editedGame) {
-      return fetch(`https://vgadb.herokuapp.com/games/${editedGame.id}`, {
+      return fetch(`http://localhost:5002/games/${editedGame.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export default {
     },
 
     getGames() {
-      return fetch(`https://vgadb.herokuapp.com/games`)
+      return fetch(`http://localhost:5002/games`)
       .then (r => r.json())
     }
 }

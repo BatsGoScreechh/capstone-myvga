@@ -3,18 +3,21 @@ body {
     margin: auto;
     height: 100%;
     overflow: hidden;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .welcome {
     max-width: 100%;
     overflow: hidden;
+    margin-top: 50px;
+    /* background-color: rgb(0,0,0,.8); */
 
     /* display: flex; */
 }
 .welcome-logo {
-    background-color: rgb(0,0,0,.7);
-    border: 5px outset gold;
+    background-image:url("./papyrus.jpg");
+    background-size: 100%;
+    border: 3px ridge gold;
     /* border-radius: 50px; */
     max-width: 100%;
     width: 820px;
@@ -40,29 +43,18 @@ body {
     -webkit-animation-duration: 1s;
     -webkit-animation-fill-mode: forwards;
     animation-name: example;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
   }
-/* .welcome-body{
-    max-width: 900px;
-    background-color: #000;
-    width: 1000px;
-    height: 506px;
-    display:block;
-    margin: auto;
-    justify-content: center;
-} */
 
 .btn{
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     text-align: center;
     text-decoration: none;
-    /* justify-content: center; */
     font-size: 30px;
     cursor: pointer;
     color: gold;
-    /* background-color: #8b0000; */
     padding: 9px;
 
 }
@@ -71,28 +63,31 @@ body {
     display: flex;
     max-width: 100%;
     position: relative;
-    -webkit-animation-name: pillar;
+    -webkit-animation-name: button;
     -webkit-animation-duration: 1s;
     -webkit-animation-fill-mode: forwards;
-    animation-name: pillar;
-    animation-duration: 6s;
+    animation-name: button;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
     text-align: center;
     justify-content: center;
-    margin-bottom: 200px;
+    /* margin-bottom: 200px; */
     /* padding-left: 10px; */
+
 }
 
-#title{
+#app-title{
     max-width: 800px;
     z-index: 0;
     margin: auto;
     position: relative;
     animation-name: title;
     padding-top: 10px;
-    animation-duration: 6s;
+    /* animation-delay: 1s; */
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
+
 .pillar-1 {
     padding-left: 2px;
     margin-left: 10px;
@@ -135,9 +130,9 @@ body {
     to {bottom: 20px;}
   }
 
-  @keyframes pillar {
+  @keyframes button {
     from {bottom:-550px;}
-    to {bottom: 130px;}
+    to {bottom: 150px;}
   }
 
   @keyframes title {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GameAPIManager from '../../modules/GameManager'
-// import GameNav from "./GameNav"
+import "./Game.css"
+import logo from "./myvgalogo4.png"
 
 export default class GameList extends Component {
 
@@ -18,6 +19,7 @@ export default class GameList extends Component {
         stateToChange[evt.target.id] = evt.target.value;
         this.setState({ gameToEdit: stateToChange });
     };
+
     constructEditGame = evt => {
         evt.preventDefault();
         if (this.state.title === "") {
@@ -38,6 +40,7 @@ export default class GameList extends Component {
                 )
         }
     }
+
     componentDidMount = () => {
         let key = this.state.key
         GameAPIManager.getSingleGame(key).then(game => {
@@ -48,6 +51,7 @@ export default class GameList extends Component {
             });
         });
     }
+
     filterGame = (pId) => {
         let matchingGames = this.props.games.filter(game => game.platform.id === pId)
         this.setState({
@@ -58,115 +62,134 @@ export default class GameList extends Component {
     render() {
         if (this.state.matchingGames.length === 0) {
             return (
-                <div className="game-div">
-                    {/* My Games Library */}
-                    <section className="games">
-                        <h1 htmlFor="Game">My Game Library</h1>
-                        {this.props.platforms.map(p => (
-                            <nav className="platform-nav">
-                                <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
-                            </nav>
-                        ))}
+                <React.Fragment>
+                    {console.log(this.state)}
+                    <div id="library-container-right">
+                        <h1 className="section-title">My Game Library</h1>
+                        <div className="platform-list">
+                            {this.props.platforms.map(p => (
+                                <ul className="platform-nav">
+                                    <li className="filter-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</li>
+                                </ul>
+                            ))}
+                        </div>
                         {
                             <div className="library-table" id="library">
-                                <p className="no-games-message">Welcome to MyVGA.</p>
+                                <p className="no-games-message"><img src={logo} width="50%" alt="logo"></img></p>
                             </div>
                         }
-                    </section>
-                </div>
+                    </div>
+                </React.Fragment>
             )
         } else if (this.state.matchingGames.length >= 1) {
             return (
-                <div className="game-div">
-                    {/* My Games Library */}
-                    <section className="games">
-                        <h1 htmlFor="Game">My Game Library</h1>
-                        {this.props.platforms.map(p => (
-                            <nav className="navbar">
-                                <button type="button" className="navbar-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</button>
-                            </nav>
-                        ))}
+                <React.Fragment>
+                    <div id="library-container-right">
+                        <h1 className="section-title">My Game Library</h1>
+                        <div className="platform-list">
+                            {this.props.platforms.map(p => (
+                                <ul className="platform-nav">
+                                    <li className="filter-buttons" onClick={() => this.filterGame(p.id)} key={p.id}>{p.name}</li>
+                                </ul>
+                            ))}
+                        </div>
                         {
                             this.state.matchingGames.map(game => {
                                 if (this.state.gameToEdit.id === game.id) {
-                                    return <div className="library-entry" id="entry" key={game.id}>
-                                        <div className="form-group">
-                                            <label htmlFor="edit-game"></label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                onChange={this.handleFieldChange}
-                                                id="title"
-                                                defaultValue={game.title}
-                                            />
-                                            < select
-                                                defaultValue={game.genreId}
-                                                name="genre"
-                                                id="genreId"
-                                                onChange={this.handleFieldChange}
-                                            >
-                                                <option value="">{game.genre.name}</option>
-                                                {this.props.genres.map(g => (
-                                                    <option key={g.id} id={g.id} value={g.id}>
-                                                        {g.name}
-                                                    </option>
-                                                ))
-                                                }
-                                            </select >
-                                            < select
-                                                defaultValue={game.platformId}
-                                                name="platform"
-                                                id="platformId"
-                                                onChange={this.handleFieldChange}>
-                                                <option value="">{game.platform.name}</option>
-                                                {this.props.platforms.map(p => (
-                                                    <option key={p.id} id={p.id} value={p.id}>
-                                                        {p.name}
-                                                    </option>
-                                                ))}
-                                            </select >
-                                            <button
-                                                type="submit"
-                                                onClick={this.constructEditGame}
-                                                className="btn-table">Submit</button>
-                                        </div>
-                                    </div>
-                                } else {
-                                    return <div className="library-table" id="library">
-                                        <div className="library-entry" id="entry" key={game.id}>
-                                            <ul className="library-list">
-                                                <li key={game.id} className="game-table">{game.title}</li>
-                                                <li key={game.genreId} className="genre-table">
-                                                    {game.genre.name}</li>
-                                            </ul>
-                                            <div className="btn-table">
-                                                <button className="edit-button" id={game.id}
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            gameToEdit: game,
-                                                            key: game.id
-                                                        })
-                                                    }}
-                                                > Edit</button>
-                                                <button
-                                                    type="button"
-                                                    className="btn-table"
-                                                    onClick={() => {
-                                                        this.props.deleteGame(game.id)
-                                                        window.alert("Game successfully deleted from library.")
-                                                        this.props.history.push("/my-games")                                                    }}
-                                                >
-                                                    Delete
-                                                </button>
+
+                                    return (
+                                        <React.Fragment>
+                                            <div className="library-table">
+                                                <div className="library-entry" key={game.id}>
+                                                    <div className="edit-form">
+                                                        <input
+                                                            type="text"
+                                                            className="edit-control"
+                                                            onChange={this.handleFieldChange}
+                                                            id="title"
+                                                            defaultValue={game.title}
+                                                        />
+                                                        < select
+                                                            defaultValue={game.genreId}
+                                                            name="genre"
+                                                            id="genreId"
+                                                            className="edit-control"
+                                                            onChange={this.handleFieldChange}
+                                                        >
+                                                            <option value="">{game.genre.name}</option>
+                                                            {this.props.genres.map(g => (
+                                                                <option key={g.id} id={g.id} value={g.id}>
+                                                                    {g.name}
+                                                                </option>
+                                                            ))
+                                                            }
+                                                        </select >
+                                                        < select
+                                                            defaultValue={game.platformId}
+                                                            name="platform"
+                                                            id="platformId"
+                                                            className="edit-control"
+                                                            onChange={this.handleFieldChange}>
+                                                            <option value="">{game.platform.name}</option>
+                                                            {this.props.platforms.map(p => (
+                                                                <option key={p.id} id={p.id} value={p.id}>
+                                                                    {p.name}
+                                                                </option>
+                                                            ))}
+                                                        </select >
+                                                        <p
+                                                            type="submit"
+
+                                                            onClick={this.constructEditGame}
+                                                            className="edit-submit">Submit</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <div className="section-title">
+
+                                            </div>
+                                        </React.Fragment>)
+                                } else {
+                                    return (
+                                        <React.Fragment>
+                                            <div className="library-table">
+                                                <div className="library-entry" key={game.id}>
+                                                    <div className="library-list">
+                                                        <p key={game.id} className="game-table">{game.title}</p>
+                                                        <p key={game.genreId} className="genre-table">
+                                                            {game.genre.name}</p>
+                                                    </div>
+                                                    <div className="btn-table">
+                                                        <p className="library-button" id={game.id}
+                                                            onClick={() => {
+                                                                this.setState({
+                                                                    gameToEdit: game,
+                                                                    key: game.id
+                                                                })
+                                                            }}
+                                                        > Edit</p>
+                                                        <p
+                                                            className="library-button"
+                                                            onClick={() => {
+                                                                this.props.deleteGame(game.id)
+                                                                window.alert("Game successfully deleted from library.")
+                                                            }}
+                                                        >
+                                                            Delete
+                                                                     </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </React.Fragment>)
+
+
+
                                 }
                             }
                             )
                         }
-                    </section>
-                </div>
+                    </div>
+                </React.Fragment>
             )
         }
     }

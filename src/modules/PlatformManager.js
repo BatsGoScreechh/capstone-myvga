@@ -1,12 +1,12 @@
 export default {
 
     getSinglePlatform: () => {
-        return fetch(`https://vgadb.herokuapp.com/platforms/`)
+        return fetch(`http://localhost:5002/platforms/`)
             .then(r => r.json())
     },
 
     getAllPlatforms: (id) => {
-        return fetch(`https://vgadb.herokuapp.com/platforms?userId=${id}`)
+        return fetch(`http://localhost:5002/platforms?userId=${id}`)
             .then(r => r.json())
     }
 }

@@ -1,22 +1,22 @@
 export default {
 
   getAllUsers: () => {
-    return fetch("https://vgadb.herokuapp.com/users?_embed=games&_embed=friends")
+    return fetch("http://localhost:5002/users?_embed=games&_embed=friends")
       .then(r => r.json())
   },
   getSingleUser: (id) => {
-    return fetch(`https://vgadb.herokuapp.com/users/${id}?_embed=games`)
+    return fetch(`http://localhost:5002/users/${id}?_embed=games`)
       .then(r => r.json())
   },
   deleteUser: (id) => {
-    return fetch(`https://vgadb.herokuapp.com/users/${id}`, {
+    return fetch(`http://localhost:5002/users/${id}`, {
       method: "DELETE"
     })
-      .then(() => fetch(`https://vgadb.herokuapp.com/users`))
+      .then(() => fetch(`http://localhost:5002/users`))
       .then(e => e.json())
   },
   addNewUser(newUser) {
-    return fetch(`https://vgadb.herokuapp.com/users`, {
+    return fetch(`http://localhost:5002/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -25,15 +25,15 @@ export default {
     }).then(data => data.json())
   },
   checkEmail(userEmail) {
-    return fetch(`https://vgadb.herokuapp.com/users/?email=${userEmail}`)
+    return fetch(`http://localhost:5002/users/?email=${userEmail}`)
       .then(r => r.json())
   },
   checkName(username) {
-    return fetch(`https://vgadb.herokuapp.com/users/?username=${username}`)
+    return fetch(`http://localhost:5002/users/?username=${username}`)
       .then(r => r.json())
   },
   checkNameAndPassword(username, password) {
-    return fetch(`https://vgadb.herokuapp.com/users/?username=${username}&&password=${password}`)
+    return fetch(`http://localhost:5002/users/?username=${username}&&password=${password}`)
       .then(r => r.json())
   }
 }

@@ -123,6 +123,7 @@ export default class ApplicationViews extends Component {
 
 
 
+
     render() {
 
         console.log(this.state)

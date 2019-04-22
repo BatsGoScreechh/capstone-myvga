@@ -30,50 +30,29 @@
       "title": "Morrowind",
       "genreId": 2,
       "platformId": 1,
-      "userId": "2",
-      "id": 6
+      "userId": "1",
+      "id": 2
     },
     {
-      "title": "Witcher 2",
+      "title": "Oblivion",
       "genreId": 2,
       "platformId": 1,
       "userId": "1",
-      "id": 7
+      "id": 3
     },
     {
-      "title": "Metal Gear Solid V",
-      "genreId": 8,
-      "platformId": 4,
-      "userId": "1",
-      "id": 8
-    },
-    {
-      "title": "Mass Effect",
+      "title": "Skyrim",
       "genreId": 2,
       "platformId": 1,
       "userId": "1",
-      "id": 9
+      "id": 4
     },
     {
       "title": "The Sims 4",
       "genreId": 4,
       "platformId": 2,
       "userId": "1",
-      "id": 10
-    },
-    {
-      "title": "World of Warcraft",
-      "genreId": 3,
-      "platformId": 3,
-      "userId": "2",
-      "id": 12
-    },
-    {
-      "title": "Battlefield 3",
-      "genreId": 1,
-      "platformId": 2,
-      "userId": "2",
-      "id": 13
+      "id": 5
     }
   ],
   "genres": [
@@ -136,7 +115,7 @@
       "id": 3
     },
     {
-      "name": "X-Box",
+      "name": "XBox",
       "id": 4
     },
     {
@@ -190,6 +169,21 @@
       "message": "Hi",
       "userId": "1",
       "id": 5
+    },
+    {
+      "message": "dafa",
+      "userId": "1",
+      "id": 6
+    },
+    {
+      "message": "123",
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "message": "Hello",
+      "userId": "1",
+      "id": 8
     }
   ]
 }
