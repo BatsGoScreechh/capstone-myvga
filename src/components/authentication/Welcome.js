@@ -13,12 +13,14 @@ export default class Welcome extends Component {
                 <div className="welcome">
                     <div className="welcome-body">
                         <div className="welcome-logo">
-                            <img src={title} alt="app-title" id="app-title"></img>
-                            <img src={logo} alt="logo" id="logo"></img>
-                            <div className="welcome-btn-container">
-                                <img src={login} type="login" className="btn" onClick={() => { this.props.history.push("/login") }}></img>
+                            <div className="welcome-screen">
+                                <img src={title} alt="app-title" id="app-title"></img>
+                                <img src={logo} alt="logo" id="logo"></img>
+                                <div className="welcome-btn-container">
+                                    <img src={login} type="login" className="btn" onClick={() => { this.props.history.push("/login") }}></img>
 
-                                <img src={register} type="register" className="btn" onClick={() => { this.props.history.push("/register") }}></img>
+                                    <img src={register} type="register" className="btn" onClick={() => { this.props.history.push("/register") }}></img>
+                                </div>
                             </div>
 
                         </div>

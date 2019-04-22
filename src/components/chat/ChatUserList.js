@@ -31,14 +31,14 @@ export default class ChatUserList extends Component {
             <React.Fragment>
                 <div className="user-div">
                     <h1>Users</h1>
-                    <div className="users">
+                    <div id="users">
                         {this.props.users.map(user => {
                             return <p className="user-link" onClick={(e) => this.filterGame(e.target.id)} id={user.id}>{user.username}</p>
                         })}
                     </div>
                 </div>
                 <h1>User's Library</h1>
-                <div className="other-user-library">
+                <div id="other-user-library">
                     {this.state.matchingGames.map(game => {
                         return (
                             <div className="user-library-div">
