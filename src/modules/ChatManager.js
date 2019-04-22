@@ -1,18 +1,18 @@
 export default {
 
     getAllMessages: () => {
-        return fetch("https://vgadb.herokuapp.com/messages/?_expand=user")
+        return fetch("http://localhost:5002/messages/?_expand=user")
             .then(chats => chats.json())
     },
 
     getSingleMessage: (id) => {
-        return fetch(`https://vgadb.herokuapp.com/messages/${id}`)
+        return fetch(`http://localhost:5002/messages/${id}`)
             .then(chats => chats.json())
 
     },
 
     addMessage(newMessage) {
-        return fetch("https://vgadb.herokuapp.com/messages", {
+        return fetch("http://localhost:5002/messages", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-// import "./Login.css"
+import "./Login.css"
+import login from "./login.png"
 export default class LoginForm extends Component {
 
     state = {
@@ -43,13 +44,13 @@ export default class LoginForm extends Component {
         return (
             <React.Fragment>
                 <div className="login-container">
-                    <h1>Please Sign In</h1>
+                    <img src={login} alt="login" className="login"></img>
                     <form>
                         <div className="form-group">
-                            <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={this.handleFieldChange} />
+                            <input type="text" className="form-login" id="username" placeholder="Enter username" onChange={this.handleFieldChange} />
                         </div>
                         <div className="form-group">
-                            <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleFieldChange} />
+                            <input type="password" className="form-login" id="password" placeholder="Password" onChange={this.handleFieldChange} />
                         </div>
                         <button type="submit" className="btn" onClick={this.logInUser}>Submit</button>
                         {/* <button className="register-button" onClick={() => { this.props.history.push("/register") }}>Register</button> */}

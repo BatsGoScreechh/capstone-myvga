@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+import "./Game.css"
 
 export default class AddGame extends Component {
 
@@ -30,61 +29,72 @@ export default class AddGame extends Component {
             userId: sessionStorage.getItem("activeUser")
         };
 
-        this.props
-            .addGame(game)
+        this.props.addGame(game)
         window.alert("Game successfully added to library.")
-        this.props.history.push("/my-games")
+        this.setState({
+            title: "",
+            genreId: "",
+            platformId: ""
+        })
     }
 
     render() {
         return (
             <React.Fragment>
-                <h1 htmlFor="Game">Add New Game</h1>
-                {/* Game Title */}
-                <input
-                    type="text"
-                    required
-                    className="form-control"
-                    onChange={this.handleFieldChange}
-                    id="title"
-                    placeholder="Enter Title"
-                />
-                {/* Game Genre */}
-                < select
-                    defaultValue=""
-                    name="genre"
-                    id="genreId"
-                    onChange={this.handleFieldChange}
-                >
-                    <option value="">Select Genre</option>
-                    {this.props.genres.map(g => (
-                        <option key={g.id} id={g.id} value={g.id}>
-                            {g.name}
-                        </option>
-                    ))}
-                </select >
-                {/* Game Platform */}
-                < select
-                    defaultValue=""
-                    name="platform"
-                    id="platformId"
-                    onChange={this.handleFieldChange}
-                >
-                    <option value="">Select Platform</option>
-                    {
-                        this.props.platforms.map(p => (
-                            <option key={p.id} id={p.id} value={p.id}>
-                                {p.name}
-                            </option>
-                        ))
-                    }
-                </select >
-                <button type="button"
-                    className="btn-table"
-                    onClick={this.constructNewGame}
-                >
-                    Add Game
+                <div id="library-container-left">
+                    <div className="section-title" id="section-title">
+                        <h1>Add New Game</h1>
+                    </div>
+                    <div className="add-game-container">
+                        {/* Game Title */}
+                        <input
+                            type="text"
+                            required
+                            className="game"
+                            onChange={this.handleFieldChange}
+                            id="title"
+                            placeholder="Enter Title"
+                        />
+                        {/* Game Genre */}
+                        < select
+                            defaultValue=""
+                            name="genre"
+                            className="game"
+                            id="genreId"
+                            onChange={this.handleFieldChange}
+                        >
+                            <option value="">Select Genre</option>
+                            {this.props.genres.map(g => (
+                                <option key={g.id} id={g.id} value={g.id}>
+                                    {g.name}
+                                </option>
+                            ))}
+                        </select >
+                        {/* Game Platform */}
+                        < select
+                            defaultValue=""
+                            name="platform"
+                            id="platformId"
+                            className="game"
+                            onChange={this.handleFieldChange}
+                        >
+                            <option value="">Select Platform</option>
+                            {
+                                this.props.platforms.map(p => (
+                                    <option key={p.id} id={p.id} value={p.id}>
+                                        {p.name}
+                                    </option>
+                                ))
+                            }
+                        </select >
+                        <button type="button"
+                            className="btn"
+                            onClick={this.constructNewGame}
+                        >
+                            Add Game
                     </button>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }

@@ -1,5 +1,6 @@
 import React, {Component} from "react"
-
+import "./Login.css"
+import register from "./register.png"
 export default class RegisterForm extends Component {
     //creates new state
 
@@ -61,16 +62,16 @@ export default class RegisterForm extends Component {
         return(
             <React.Fragment>
                 <div className="login-container">
-            <h1>Please Register</h1>
+            <img src={register} alt="register" className="register"></img>
             <form>
             <div className="form-group">
-                <input type="text" className="form-control" id="username" placeholder="User Name" onChange={this.handleFieldChange}/>
+                <input type="text" className="form-login" id="username" placeholder="User Name" onChange={this.handleFieldChange}/>
             </div>
             <div className="form-group">
-                <input type="email" className="form-control" id="email" placeholder="Email Address" onChange={this.handleFieldChange}/>
+                <input type="email" className="form-login" id="email" placeholder="Email Address" onChange={this.handleFieldChange}/>
             </div>
             <div className="form-group">
-                <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleFieldChange}/>
+                <input type="password" className="form-login" id="password" placeholder="Password" onChange={this.handleFieldChange}/>
             </div>
             <button type="submit" className="btn" onClick={this.createNewUser}>Register</button>
             </form>

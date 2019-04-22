@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./Chat.css"
-export default class ChatList extends Component {
 
+export default class ChatList extends Component {
     state = {
         userId: parseInt(sessionStorage.getItem("activeUser")),
         message: "",
@@ -30,29 +30,47 @@ export default class ChatList extends Component {
 
         return (
             <React.Fragment>
-                <div className="chat-div">
-                    <h1>Chat</h1>
-                    <div className="chat">
-                        {this.props.messages.map(singleMessage => {
-                            if (singleMessage.userId === sessionStorage.getItem("activeUser")) {
-                                return <div key={singleMessage.id}>
-                                    <div className="user-message"><strong>{singleMessage.user.username}</strong>{": "}</div>
-                                    {singleMessage.message}</div>
+                <div id="chat-body">
+                    <div className="chat-div">
+                        <h1>Chat</h1>
+                        <div className="chat">
+                            {this.props.messages.map(singleMessage => {
+                                if (singleMessage.userId === sessionStorage.getItem("activeUser")) {
+                                    return <div key={singleMessage.id}>
+                                        <div className="user-content">
+                                            <div className="user-message">
+                                                {singleMessage.user.username}{": "}
 
-                            }else{
-                                return <div key={singleMessage.id}>
-                            <div className="other-message"><strong>{singleMessage.user.username}</strong>{": "}</div>
-                            {singleMessage.message}
-                        </div>
+                                                <div className="message">
+                                                    {singleMessage.message}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            }
+                                } else {
+                                    return <div key={singleMessage.id}>
+                                        <div className="other-content">
+                                            <div className="other-message">
+                                                {singleMessage.user.username}{": "}
+
+
+                                                <div className="message">
+                                                    {singleMessage.message}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
                             })}
-                    </div>
-                    <div className="chat-input">
-                        <div className="form-group">
-                            <input type="text" className="form-control" id="message" placeholder="Enter Message" onChange={this.handleFieldChange} />
                         </div>
-                        <button type="submit" className="btn" onClick={this.constructNewMessage}>Send</button>
+                        <div className="chat-input">
+                            <div className="form-group">
+                                <input type="text" className="chat-control" id="message" placeholder="Enter Message" onChange={this.handleFieldChange} />
+                            </div>
+                            <button type="submit" className="btn" onClick={this.constructNewMessage}>Send</button>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

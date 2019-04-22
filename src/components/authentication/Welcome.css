@@ -1,0 +1,141 @@
+
+body {
+    margin: auto;
+    height: 100%;
+    overflow: hidden;
+    max-width: 1000px;
+}
+
+.welcome {
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 50px;
+    /* background-color: rgb(0,0,0,.8); */
+
+    /* display: flex; */
+}
+.welcome-logo {
+    background-image:url("./papyrus.jpg");
+    background-size: 100%;
+    border: 3px ridge gold;
+    /* border-radius: 50px; */
+    max-width: 100%;
+    width: 820px;
+    height: 610px;
+    position: relative;
+    /* -webkit-animation-name: example; */
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    /* animation-name: example; */
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    margin: auto;
+    /* display: flex; */
+    justify-content: center;
+    /* margin-bottom: 10px; */
+    overflow: hidden
+
+  }
+
+  #logo{
+    position: relative;
+    -webkit-animation-name: example;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+
+.btn{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: gold;
+    padding: 9px;
+
+}
+
+.welcome-btn-container{
+    display: flex;
+    max-width: 100%;
+    position: relative;
+    -webkit-animation-name: button;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: button;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    justify-content: center;
+    /* margin-bottom: 200px; */
+    /* padding-left: 10px; */
+
+}
+
+#app-title{
+    max-width: 800px;
+    z-index: 0;
+    margin: auto;
+    position: relative;
+    animation-name: title;
+    padding-top: 10px;
+    /* animation-delay: 1s; */
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.pillar-1 {
+    padding-left: 2px;
+    margin-left: 10px;
+}
+.pillar-2{
+    margin-right: 50px;
+    padding-right: 50px;
+}
+.welcome-container {
+        border-radius: 100px;
+        max-width: 100%;
+        position: relative;
+        -webkit-animation-name: login;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-name: login;
+        animation-duration: 6s;
+        animation-fill-mode: forwards;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        overflow: hidden;
+
+      }
+
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes example {
+    from {top: -500px;}
+    to {top: 0px;}
+  }
+
+  @keyframes example {
+    from {top: -550px;}
+    to {top: -50px;}
+  }
+
+  @keyframes login {
+    from {bottom:-550px;}
+    to {bottom: 20px;}
+  }
+
+  @keyframes button {
+    from {bottom:-550px;}
+    to {bottom: 150px;}
+  }
+
+  @keyframes title {
+      from {right: 800px;}
+      to {right: -10px;}
+  }

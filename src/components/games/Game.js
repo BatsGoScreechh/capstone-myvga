@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import AddGame from "./AddGame";
 import GameList from "./GameList";
+import "./Game.css"
 // import GameNav from "./GameNav"
 export default class Game extends Component {
   render() {
     return (
       <React.Fragment>
-         {/* <GameNav
-            {...this.props}
-            platforms={this.props.platforms}
-            games={this.props.games}
-          /> */}
+        {console.log(this.props)}
+         <div id="library-body">
           <AddGame
             {...this.props}
             games={this.props.games}
@@ -19,7 +17,6 @@ export default class Game extends Component {
             addGame={this.props.addGame}
             updateGame={this.props.updateGame}
             deleteGame={this.props.deleteGame}
-
           />
           <GameList
             {...this.props}
@@ -30,6 +27,7 @@ export default class Game extends Component {
             updateGame={this.props.updateGame}
             deleteGame={this.props.deleteGame}
           />
+          </div>
       </React.Fragment>
     );
   }
