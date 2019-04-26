@@ -44,18 +44,20 @@ export default class LoginForm extends Component {
         return (
             <React.Fragment>
                 <div className="login-container">
-                    <img src={login} alt="login" className="login"></img>
-                    <form>
-                        <div className="form-group">
-                            <input type="text" className="form-login" id="username" placeholder="Enter username" onChange={this.handleFieldChange} />
-                        </div>
-                        <div className="form-group">
-                            <input type="password" className="form-login" id="password" placeholder="Password" onChange={this.handleFieldChange} />
-                        </div>
-                        <button type="submit" className="btn" onClick={this.logInUser}>Submit</button>
-                        {/* <button className="register-button" onClick={() => { this.props.history.push("/register") }}>Register</button> */}
-                    </form>
-                    <h4>{this.state.errorMessage}</h4>
+                    <div className="login-body">
+                        <img src={login} alt="login" className="login"></img>
+                        <form>
+                            <div className="form-group">
+                                <input type="text" className="form-login" id="username" placeholder="Enter User Name" onChange={this.handleFieldChange} />
+                            </div>
+                            <div className="form-group">
+                                <input type="password" className="form-login" id="password" placeholder="Password" onChange={this.handleFieldChange} />
+                            </div>
+                            <button type="submit" className="btn" onClick={this.logInUser}>Submit</button>
+                            {/* <button className="register-button" onClick={() => { this.props.history.push("/register") }}>Register</button> */}
+                        </form>
+                        <h4>{this.state.errorMessage}</h4>
+                    </div>
                 </div>
             </React.Fragment>
 

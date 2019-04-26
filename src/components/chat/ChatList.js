@@ -23,8 +23,14 @@ export default class ChatList extends Component {
 
         this.props.addMessage(message)
         this.setState()
+        this.clearField()
     }
 
+    clearField = () => {
+        document.getElementById("message").value = "";
+
+
+      }
 
     render() {
 
@@ -33,7 +39,7 @@ export default class ChatList extends Component {
                 <div id="chat-body">
                     <div className="chat-div">
                         <h1>Chat</h1>
-                        <div className="chat">
+                        <div id="chat">
                             {this.props.messages.map(singleMessage => {
                                 if (singleMessage.userId === sessionStorage.getItem("activeUser")) {
                                     return <div key={singleMessage.id}>

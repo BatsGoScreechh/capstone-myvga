@@ -5,7 +5,7 @@
     display:flex;
 
     text-align: left;
-    color: goldenrod;
+    color: gold;
     font-size: 1.5em;
     padding-left: 20px;
     font-family: 'Times New Roman', Times, serif;
@@ -24,7 +24,7 @@
 }
 
 .message {
-    color: gold;
+    color: #D9AB4B;
     font-size: 1em;
     font-family: 'Times New Roman', Times, serif;
 margin-left: 5px;
@@ -37,7 +37,7 @@ margin-left: 5px;
     display: flex;
     background-image:url(../authentication/papyrus.jpg);
     background-size: 100%;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
     text-align: center;
 }
 
@@ -45,19 +45,32 @@ margin-left: 5px;
     width: 60%;
     display: flex;
     flex-direction: column;
-    border-left: 1px solid yellow;
-    /* border-bottom: 1px solid yellow; */
-    background-color:rgb(0, 0, 0, 0.8)
+    border-left: 1px ridge #D9AB4B;
+    background-color:rgb(0, 0, 0, 0.5);
+    -webkit-animation-name: user;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: user;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    position: relative;
 }
 
 #chat-body {
     width: 40%;
-    background-color:rgb(0, 0, 0, 0.8);
-    margin-top: 0
+    background-color:rgb(0, 0, 0, 0.5);
+    margin-top: 0;
+    -webkit-animation-name: chat;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: chat;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    position: relative;
 }
 
 .user-link {
-    color: gold;
+    color: #D9AB4B;
     font-size: 1.5em;
     cursor: pointer;
 }
@@ -65,50 +78,122 @@ margin-left: 5px;
 .user-div {
     height: 50%;
 }
-.users {
+#users {
     margin: 0;
     height: 73%;
     overflow-y: scroll;
 }
 
+#users::-webkit-scrollbar {
+    width: 10px;
+  }
+#users::-webkit-scrollbar-track {
+    background: rgb(64, 0, 0);
+  }
+#users::-webkit-scrollbar-thumb {
+    background: #D9AB4B;
+  }
+#users::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 0, 0);
+  }
+
+  #users::-webkit-scrollbar-button {
+      background: #D9AB4B;
+  }
+
 .chat-input {
     height: 20%;
     padding-top: 30px;
-    border-top: 1px solid gold;
+    border-top: 1px ridge #D9AB4B;
 }
 
 #message {
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
     background-color: rgb(64, 0, 0);
     font-size: 1.5em;
     height: 30px;
 }
 
 #message:active {
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
 }
 
 #message::placeholder {
-    color: gold;
+    color: #D9AB4B;
 }
 
 #game-title {
-    color: gold;
+    color: #D9AB4B;
     font-size: 1.5em;
     /* overflow-y: scroll; */
 }
 
-.other-user-library {
+#other-user-library {
     overflow-y: scroll;
 }
 
-.chat {
+#other-user-library::-webkit-scrollbar {
+    width: 10px;
+  }
+#other-user-library::-webkit-scrollbar-track {
+    background: rgb(64, 0, 0);
+  }
+#other-user-library::-webkit-scrollbar-thumb {
+    background: #D9AB4B;
+  }
+#other-user-library::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 0, 0);
+  }
+
+  #other-user-library::-webkit-scrollbar-button {
+      background: #D9AB4B;
+  }
+
+#chat {
     height: 290px;
     overflow-y: scroll;
+    -webkit-animation-name: chat;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: chat;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
 }
 
+#chat::-webkit-scrollbar {
+    width: 10px;
+  }
+#chat::-webkit-scrollbar-track {
+    background: rgb(64, 0, 0);
+  }
+#chat::-webkit-scrollbar-thumb {
+    background: #D9AB4B;
+  }
+#chat::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 0, 0);
+  }
+
+  #chat::-webkit-scrollbar-button {
+      background: #D9AB4B;
+  }
+
 .chat-control {
-    color: gold;
+    color: #D9AB4B;
     font-family: 'Times New Roman', Times, serif;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
+}
+
+.nav-hidden {
+    visibility: hidden;
+    display: none;
+}
+
+@keyframes user {
+    from {left: 1000px;}
+    to {left: 0px;}
+}
+
+@keyframes chat {
+    from {right: 1000px;}
+    to {right: 0px;}
 }

@@ -13,9 +13,9 @@
     text-align: center;
     font-size: 20px;
     background-color: rgb(64, 0, 0);
-    color: gold;
+    color: #D9AB4B;
     font-family: 'Times New Roman', Times, serif;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
 }
 
 .platform-list {
@@ -26,7 +26,7 @@
 .platform-nav {
     width: 100%;
     background-color: rgb(64, 0, 0);
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
     font-size: 20px;
     padding: 10px;
     display:flex;
@@ -40,7 +40,7 @@
     flex-direction: row;
     text-align: center;
     cursor: pointer;
-    color: gold;
+    color: #D9AB4B;
     text-transform: uppercase;
     font-family: 'Times New Roman', Times, serif
 }
@@ -63,7 +63,7 @@
 .library-entry {
     width: 100%;
     margin: auto;
-    /* border: 1px solid green; */
+    /* border: 1px ridge green; */
     text-align: center;
     background-color: unset;
 }
@@ -81,30 +81,63 @@
 #library-container-right{
     flex-direction: row;
     width: 75%;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
+    border-top: 0px;
     text-align: center;
     overflow-y: auto;
-    background-color:rgb(0, 0, 0, 0.5)
+    background-color:rgb(0, 0, 0, 0.5);
+    position: relative;
+    -webkit-animation-name: right-section;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: right-section;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+
 }
 
+#library-container-right::-webkit-scrollbar {
+    width: 10px;
+  }
+#library-container-right::-webkit-scrollbar-track {
+    background: rgb(64, 0, 0);
+  }
+#library-container-right::-webkit-scrollbar-thumb {
+    background: #D9AB4B;
+  }
+#library-container-right::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 0, 0);
+  }
+
+  #library-container-right::-webkit-scrollbar-button {
+      background: #D9AB4B;
+  }
+
 #library-container-left {
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
+    border-top: 0px;
     width: 25%;
     flex-direction: row;
     text-align: center;
-        background-color:rgb(0, 0, 0, 0.5)
-
+        background-color:rgb(0, 0, 0, 0.5);
+        position: relative;
+        -webkit-animation-name: left-section;
+        -webkit-animation-duration: 5s;
+        -webkit-animation-fill-mode: forwards;
+        animation-name: left-section;
+        animation-duration: 5s;
+        animation-fill-mode: forwards;
 }
 
 h1 {
-    color: gold;
+    color: #D9AB4B;
     background-color: rgb(64, 0, 0);
-    border-top: 1px solid gold;
-    border-bottom: 1px solid gold;
+    border-top: 1px ridge #D9AB4B;
+    border-bottom: 1px ridge #D9AB4B;
 }
 
 p {
-    color: gold;
+    color: #D9AB4B;
 }
 
 .btn-table {
@@ -118,7 +151,7 @@ p {
 
 .library-button {
     font-family: 'Times New Roman', Times, serif;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
     padding: 5px;
     margin: 0;
     margin-right: 5px;
@@ -138,7 +171,7 @@ p {
 
 .edit-control {
     background-color: rgb(64, 0, 0);
-    color: gold;
+    color: #D9AB4B;
     height: 35px;
     margin-top: 10px;
 }
@@ -146,10 +179,20 @@ p {
 .edit-submit {
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;
-    border: 1px solid gold;
+    border: 1px ridge #D9AB4B;
 
 }
 
 #title::placeholder {
-    color: gold;
+    color: #D9AB4B;
+}
+
+@keyframes left-section {
+    from {right: 1000px;}
+    to {right: 0px;}
+}
+
+@keyframes right-section {
+    from {right: -2000px;}
+    to {right: 0px;}
 }

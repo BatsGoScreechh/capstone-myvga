@@ -25,14 +25,6 @@ export default class Chat extends Component {
                             games={this.props.games}
                             allGames={this.props.allGames}
                         />
-                        {/* <ChatUserLibrary
-                    {...this.props}
-                    users={this.props.users}
-                    platforms={this.props.platforms}
-                    genres={this.props.genres}
-                    games={this.props.games}
-                    showLibrary={this.props.showLibrary}
-                /> */}
                     </div>
                 </div>
             </React.Fragment>

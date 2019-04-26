@@ -25,7 +25,7 @@ export default {
       }).then(data => data.json())
     },
     updateGame(editedGame) {
-      return fetch(`http://localhost:5002/games/${editedGame.id}`, {
+      return fetch(`http://localhost:5002/games/${editedGame.id}?_expand=genre&_expand=platform`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
