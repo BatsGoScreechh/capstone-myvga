@@ -11,6 +11,7 @@ import Login from "./authentication/Login"
 import Welcome from "./authentication/Welcome"
 import Chat from "./chat/Chat"
 
+
 export default class ApplicationViews extends Component {
 
 
