@@ -19,6 +19,11 @@ export default class AddGame extends Component {
         this.setState(stateToChange);
     };
 
+    refreshComponent() {
+        // Force a render with a simulated state change
+        this.setState({ state: this.state });
+    }
+
     //Builds form as an object
     constructNewGame = evt => {
         evt.preventDefault();
@@ -34,9 +39,18 @@ export default class AddGame extends Component {
         this.setState({
             title: "",
             genreId: "",
-            platformId: ""
+            platformId: "",
+
         })
+        this.clearField()
     }
+
+    clearField = () => {
+        document.getElementById("title").value = "";
+        document.getElementById("genreId").value = "";
+        document.getElementById("platformId").value = "";
+
+      }
 
     render() {
         return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Welcome.css"
-import logo from "./myvgalogo4.png"
+import logo from "./logo.png"
 import login from "./login.png"
 import register from "./register.png"
 import title from "./title.png"

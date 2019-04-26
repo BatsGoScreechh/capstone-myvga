@@ -27,7 +27,7 @@ export default class RegisterForm extends Component {
         this.props.checkName(this.state.username).then(user => {
                 if(user.length === 0){
                     this.props.checkEmail(this.state.email).then(user => {
-                        if(user.length ===0){
+                        if(user.length === 0){
                             const newUser = {
                                 username: this.state.username,
                                 email: this.state.email,
@@ -62,6 +62,7 @@ export default class RegisterForm extends Component {
         return(
             <React.Fragment>
                 <div className="login-container">
+                <div className="login-body">
             <img src={register} alt="register" className="register"></img>
             <form>
             <div className="form-group">
@@ -76,6 +77,7 @@ export default class RegisterForm extends Component {
             <button type="submit" className="btn" onClick={this.createNewUser}>Register</button>
             </form>
             <h4>{this.state.errorMessage}</h4>
+            </div>
             </div>
             </React.Fragment>
 

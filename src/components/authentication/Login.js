@@ -48,7 +48,7 @@ export default class LoginForm extends Component {
                         <img src={login} alt="login" className="login"></img>
                         <form>
                             <div className="form-group">
-                                <input type="text" className="form-login" id="username" placeholder="Enter username" onChange={this.handleFieldChange} />
+                                <input type="text" className="form-login" id="username" placeholder="Enter User Name" onChange={this.handleFieldChange} />
                             </div>
                             <div className="form-group">
                                 <input type="password" className="form-login" id="password" placeholder="Password" onChange={this.handleFieldChange} />

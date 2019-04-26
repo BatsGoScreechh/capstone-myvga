@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GameAPIManager from '../../modules/GameManager'
 import "./Game.css"
-import logo from "./myvgalogo4.png"
+import logo from "../authentication/logo.png"
 
 export default class GameList extends Component {
 
@@ -10,6 +10,8 @@ export default class GameList extends Component {
         title: "",
         platformId: "",
         gameToEdit: "",
+        genreId: "",
+        platformName: "",
         key: "",
         userId: parseInt(sessionStorage.getItem("activeUser"))
     };
@@ -20,17 +22,25 @@ export default class GameList extends Component {
         this.setState({ gameToEdit: stateToChange });
     };
 
+        clearField = () => {
+        document.getElementById("title").value = "";
+        document.getElementById("genreId").value = "";
+        document.getElementById("platformId").value = "";
+
+      }
+
     constructEditGame = evt => {
         evt.preventDefault();
+
         if (this.state.title === "") {
             window.alert("Cannot leave blank");
         } else {
             const editedGame = {
                 id: this.state.key,
-                title: this.state.title,
-                genreId: parseInt(this.state.genreId),
-                platformId: parseInt(this.state.platformId),
-                userId: sessionStorage.getItem("credentials")
+                title: this.state.gameToEdit.title,
+                genreId: parseInt(this.state.gameToEdit.genreId),
+                platformId: parseInt(this.state.gameToEdit.platformId),
+                userId: sessionStorage.getItem("activeUser")
             };
             this.props.updateGame(editedGame)
                 .then(() => this.props.history.push("/my-games"))
@@ -60,6 +70,8 @@ export default class GameList extends Component {
     }
 
     render() {
+        console.log(this.state)
+
         if (this.state.matchingGames.length === 0) {
             return (
                 <React.Fragment>

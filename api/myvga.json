@@ -23,36 +23,70 @@
       "email": "b@b.com",
       "password": "a",
       "id": 4
+    },
+    {
+      "username": "DoggysGoBarkk",
+      "email": "d@d.d",
+      "password": "a",
+      "id": 5
     }
   ],
   "games": [
     {
-      "title": "Morrowind",
-      "genreId": 2,
-      "platformId": 1,
-      "userId": "1",
-      "id": 2
+      "id": 5,
+      "title": "The Sims 4!!!!!!!",
+      "genreId": 11,
+      "platformId": 3,
+      "userId": "1"
     },
     {
-      "title": "Oblivion",
-      "genreId": 2,
-      "platformId": 1,
+      "title": "Battlefield 3",
+      "genreId": 1,
+      "platformId": 2,
       "userId": "1",
-      "id": 3
+      "id": 6
     },
     {
       "title": "Skyrim",
       "genreId": 2,
       "platformId": 1,
       "userId": "1",
-      "id": 4
+      "id": 7
     },
     {
-      "title": "The Sims 4",
-      "genreId": 4,
-      "platformId": 2,
+      "title": "Oblivion",
+      "genreId": 2,
+      "platformId": 1,
       "userId": "1",
-      "id": 5
+      "id": 8
+    },
+    {
+      "title": "Morrowind",
+      "genreId": 2,
+      "platformId": 1,
+      "userId": "1",
+      "id": 9
+    },
+    {
+      "title": "Diablo 3",
+      "genreId": 8,
+      "platformId": 3,
+      "userId": "1",
+      "id": 10
+    },
+    {
+      "title": "Risk of Rain 2",
+      "genreId": 1,
+      "platformId": 1,
+      "userId": "1",
+      "id": 11
+    },
+    {
+      "title": "World of Warcraft",
+      "genreId": 3,
+      "platformId": 3,
+      "userId": "1",
+      "id": 12
     }
   ],
   "genres": [
@@ -127,28 +161,6 @@
       "id": 6
     }
   ],
-  "friends": [
-    {
-      "userId": 1,
-      "otherFriendId": 4,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "otherFriendId": 3,
-      "id": 3
-    },
-    {
-      "userId": 3,
-      "otherFriendId": 1,
-      "id": 4
-    },
-    {
-      "userId": 4,
-      "otherFriendId": 3,
-      "id": 5
-    }
-  ],
   "messages": [
     {
       "message": "Hello",
@@ -184,6 +196,36 @@
       "message": "Hello",
       "userId": "1",
       "id": 8
+    },
+    {
+      "message": "Go ggoogaog",
+      "userId": "5",
+      "id": 9
+    },
+    {
+      "message": "Hi",
+      "userId": "1",
+      "id": 10
+    },
+    {
+      "message": "Anybody there?",
+      "userId": "1",
+      "id": 11
+    },
+    {
+      "message": "Hello World",
+      "userId": "1",
+      "id": 12
+    },
+    {
+      "message": "adgdagad",
+      "userId": "1",
+      "id": 13
+    },
+    {
+      "message": "Hey",
+      "userId": "1",
+      "id": 14
     }
   ]
 }

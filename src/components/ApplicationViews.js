@@ -1,4 +1,4 @@
-import { Route, Redirect, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import UserAPIManager from "../modules/UserManager"
 import GameAPIManager from "../modules/GameManager"

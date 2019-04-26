@@ -23,8 +23,14 @@ export default class ChatList extends Component {
 
         this.props.addMessage(message)
         this.setState()
+        this.clearField()
     }
 
+    clearField = () => {
+        document.getElementById("message").value = "";
+
+
+      }
 
     render() {
 
